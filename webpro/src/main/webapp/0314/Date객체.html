@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../CSS/public.css">
+<style>
+#out1{
+	font-size : 2.0em;
+	font-weight : bold;
+}
+</style>
+<script>
+var today = new Date();
+
+window.setInterval(function() {
+	var today = new Date();
+	
+	out = today.toLocaleString();
+	
+	document.getElementById('out1').innerHTML = out;
+}, 1000); // 1초마다 한번씩 실행하는 명령어
+
+function proc1(){
+	date1 = new Date(20000);
+	date2 = new Date("2000,8,15");
+	date3 = new Date(2000, 8-1, 15, 13, 20, 45);
+	
+	str = "today : " + today + "<br>";
+	str += date1 + "<br>";
+	str += date2 + "<br>";
+	str += date3 + "<br>";
+	
+	str += "<br><br>";
+	str += today.toLocaleString() + "<br>";
+	str += date1.toLocaleString() + "<br>";
+	str += date2.toLocaleDateString() + "<br>";
+	str += date3.toLocaleTimeString() + "<br>";
+	
+	document.getElementById('result1').innerHTML = str;
+	//value - input, textarea, select, option에 값을 넣을 때
+	//innerHTML
+	//innerText - 태그 명령어들이 적용되지 않고 그대로 출력됨
+	//textContent - 태그 명령어들이 적용되지 않고 그대로 출력됨
+}
+function proc2(){
+	day = today.getDay();
+	
+	switch(day){
+	case 0: str = "일요일"; break;
+	case 1: str = "월요일"; break;
+	case 2: str = "화요일"; break;
+	case 3: str = "수요일"; break;
+	case 4: str = "목요일"; break;
+	case 5: str = "금요일"; break;
+	case 6: str = "토요일"; break;	
+	}
+	
+	res = "오늘은 " + today.toLocaleString() + "<br>";
+	res += str + "입니다."
+	
+	document.getElementById('result2').innerHTML = res;
+}
+function proc3(){
+	days = ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"];
+	
+	day = today.getDay();
+	
+	res = "오늘은 " + today.toLocaleString() + "<br>"; 
+	res += days[day] + "입니다."; 
+	
+	document.getElementById('result3').innerHTML = res;
+}
+function proc4(){
+	bday = new Date("1994,5,14");
+	//bday = new Date(2000, 4, 14);
+	
+	times = today.getTime() - bday.getTime();
+	console.log(today.getTime(), bday.getTime());
+	console.log(times);
+	
+	days = times / 1000 / 60 / 60 / 24;
+	str = "오늘 : " + today.toLocaleString() + "<br>";
+	str += "태어난 날 : " + bday.toLocaleString() + "<br>";
+	str += "살아온 날 : " + days + "<br>";
+	str += "살아온 년도 : " + (days / 365);	
+	
+	document.getElementById('result4').innerHTML = str;
+}
+
+function proc5(){
+	//오늘을 기준으로 100일 후
+	//today.getTime + 100의 getTime
+	
+	days = new Date(today.getTime() + (100 * 24 * 60 * 60 * 1000));
+	
+	str = "오늘 : " + today.toLocaleString() + "<br>";
+	str += "100일 후 : " + days.toLocaleString()
+	
+	document.getElementById('result5').innerHTML = str;
+}
+
+function proc6(){
+	xmas = new Date("2022,12,25");
+	
+	//xmas의 getTime - today.getTime
+	times = (xmas.getTime() - today.getTime());
+	days = times / 1000/ 60/ 60/ 24;
+	
+	str = "오늘 날짜 : " + today.toLocaleString() + "<br>";
+	str += "크리스마스까지 남은 날짜 : " + days;
+	
+	document.getElementById('result6').innerHTML = str;
+	
+}
+</script>
+</head>
+<body>
+
+<div class="box">
+    <pre id="out1">
+    </pre>
+    <input type="button" value="확인" onclick="proc1()">
+  <div id="result1"></div>
+</div>
+
+<div class="box">
+    <pre>
+    요일 구하기 - getDay() : 0 ~ 6의 값을 리턴한다.
+    </pre>
+    <input type="button" value="확인" onclick="proc2()">
+  <div id="result2"></div>
+</div>
+
+<div class="box">
+    <pre>
+    요일 구하기(배열 이용) - getDay() : 0 ~ 6의 값을 리턴한다.
+    </pre>
+    <input type="button" value="확인" onclick="proc3()">
+  <div id="result3"></div>
+</div>
+
+<div class="box">
+    <pre>
+    날짜 수 구하기 - getTime() : millisec의 값을 리턴한다.
+    실제 초를 구하기 위해서는 1000으로 나눈다.
+    </pre>
+    <input type="button" value="확인" onclick="proc4()">
+  <div id="result4"></div>
+</div>
+
+<div class="box">
+    <pre>
+    날짜 수 구하기 - getTime() : millisec의 값을 리턴한다.
+    실제 초를 구하기 위해서는 1000으로 나눈다.
+    
+    100일 후의 날짜 구하기
+    </pre>
+    <input type="button" value="확인" onclick="proc5()">
+  <div id="result5"></div>
+</div>
+
+<div class="box">
+    <pre>
+    날짜 수 구하기 - getTime() : millisec의 값을 리턴한다.
+    실제 초를 구하기 위해서는 1000으로 나눈다.
+    
+    크리스마스까지 남은 날짜 구하기
+    </pre>
+    <input type="button" value="확인" onclick="proc6()">
+  <div id="result6"></div>
+</div>
+</body>
+</html>

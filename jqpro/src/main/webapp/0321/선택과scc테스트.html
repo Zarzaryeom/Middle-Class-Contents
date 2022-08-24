@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../CSS/public.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>
+  //$(document).ready(function(){
+    $(function(){ //위와 같은 뜻
+	  //버튼을 클릭하면
+	  $('#btn1').on('click', function(){
+	  // id = result1 배경색을 변경
+		$('#result1').css('background', 'yellow');	  
+      // h1요소의 글자색을 파랑
+        $('h1').css('color', 'blue');
+	  // id가 para인 요소의 글자색은 녹색
+	    $('#para').css('color', 'green');
+	  // class 가 sample요소의 글자색은 빨강 
+	    $('.sample').css('color', 'red');
+	  })
+  })
+</script>
+</head>
+<body>
+
+<div class="box">
+    <pre>
+    </pre>
+    <input id="btn1" type="button" value="확인">
+  <div id="result1">
+    <h1> 제목입니다 </h1>
+	<h2 id="para"> 작은 제목입니다 </h2>
+	<h2 class="sample"> 샘플입니다 </h2>
+  </div>
+</div>
+</body>
+</html>

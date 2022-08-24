@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../CSS/public.css">
+<style type="text/css">
+textarea{
+	margin-left : 20px;
+}
+</style>
+<script type="text/javascript">
+function proc1() {
+	//입력한 값음 가져온다.
+	text = document.getElementsByTagName('textarea')[0];
+	
+	text = text.value;
+	
+	// 정규식 : /로 시작해서 /로 끝남
+	// 스크립트엔 replaceAll 메서드가 없다.
+	retext = text.replace(/\r/g, "").replace(/\n/g, "<br>");
+	
+	
+	document.getElementById('result1').innerHTML = retext;
+}
+
+function proc2() {
+	str = "가aA 나bB 우리 나라 좋은 나라 대한 민국 만세";
+	
+	arr = str.split(" ");
+	
+	out = "str의 길이 : " + str.length + "<br>"
+	out += "str.split(' ') 후 : " + arr.length + "<br>";
+	
+	document.getElementById('result2').innerHTML = out;
+	
+}
+</script>
+</head>
+<body>
+
+<div class="box">
+    <pre>
+    replace(old, new) : old문자를 new문자열로 바꾼다.
+    
+    입력시 엔터기호가 포함되어있다.
+    앤터기호 : '\r\n'의 기능이 포함되어 있다.
+	브라우저에서 \r은 "" \n은 &lt;br>로 변경
+    </pre>
+    <textarea rows="12" cols="40"></textarea>
+    <br>
+    <input type="button" value="확인" onclick="proc1()">
+  <div id="result1"></div>
+</div>
+
+<div class="box">
+    <pre>
+	split(구분자, 갯수) : 구분자를 기준으로 최대 갯수만큼 문자열을 분리하여 배열로 리턴한다.
+	
+	str = "가aA 나bB 우리 나라 좋은 나라 대한 민국 만세";    
+    </pre>
+    <br>
+    <input type="button" value="확인" onclick="proc2()">
+  <div id="result2"></div>
+</div>
+</body>
+</html>

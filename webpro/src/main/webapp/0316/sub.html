@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../CSS/public.css">
+<script>
+function proc1() {
+	//입력한 값 가져오기
+	namevalue = document.ff.name.value.trim();
+	idvalue = document.ff.id.value.trim();
+	
+	out = "이름 : " + namevalue + "<br>";
+	out += "아이디 : " + idvalue + "<br>";
+	
+	//부모창으로 출력하ㅣ
+	opener.document.getElementById('result1').innerHTML = out;
+	
+	window.close();
+}
+</script>
+</head>
+<body>
+
+<div class="box">
+    <pre>
+    window.open()에 의해서 열린 자식창임
+    자식창에 입력받은 데이터를 부모창으로 보낸다.
+    
+    opener : 자식창에서 부모창을 가리킬 때 사용되는 속성
+    
+    document.getElementById('name')
+    document.querySleceor(#'name')
+    
+    document.ff.name
+    document.ff.id
+    </pre>
+	<div id="aa"></div>
+    <form name="ff">
+      이름 : <input type="text" id="name" name="name"><br>
+      아이디 : <input type="text" id="id" name="id"><br>
+      <input type="button" value="확인" onclick="proc1()">
+    </form>
+</div>
+</body>
+</html>

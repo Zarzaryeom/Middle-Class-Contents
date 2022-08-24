@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../CSS/public.css">
+<script src="../js/formcheck.js"></script>
+<script type="text/javascript">
+  function proc1() {
+	if(datapro()){
+		alert("서버로 전송 실행 작업")
+	}
+  }
+  
+  function passcheck(){
+	  passvalue = document.getElementById('pass2').value.trim();
+	  
+// 	  console.log(passvalue)
+	  
+	  passreg = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%&*]).{4,12}$/;
+	  
+	  if(!(passreg.test(passvalue))){
+		  alert("비밀번호 형식 오류");
+		  return false;
+	  }
+	  alert("비밀번호 성공");
+  }
+  
+ /* 
+  function passcheck() {
+	strvalue = ["1000", "원", "2000원", "10000원"];
+	
+	reg = /.*(?=원)/;
+	
+	str = "";
+	for(i = 0; i < strvalue.length; i++){
+// 		str += strvalue[i].match(reg) + "\n";
+		str += reg.test(strvalue[i]) + "\n";
+	}
+	alert(str);
+}
+ */
+</script>
+</head>
+<body>
+<div class="box">
+  <pre>
+    비밀번호 체크 - 영문대소문자, 숫자, 특수문자가 반드시 한글자 이상씩 포함 
+    			4 ~ 12글자 사이로 입력한다.
+    전방탐색을 이용한다.
+      형식 : 찾는글자(?=기준글자)
+      	==> 찾는 글자가 생략더라도 기준 글자는 반드시 포함되어 있어야 한다.
+  </pre>
+  <label>비밀번호</label> <input type="text" name="pass" id="pass2">
+  <br>
+  <input type='button' value='확인' onclick="passcheck()">
+</div>
+
+<div class="box">
+    <pre>
+    외부스크립트를 이용한 데이터 검증
+    </pre>
+    <h3>회원가입</h3>
+		<form name="ff">
+			<label>이름</label> <input type='text' name="name" id='name'><br> 
+			<label>주소</label> <input	type='text' name="addr" id='addr'><br> 
+			<label>생일</label> <input type='date' name="birthday" id='birthday'><br> 
+			<label>아이디</label> <input type='text' name="userid" id='userid'><br>
+			<label>비밀번호</label> <input type="password" name="pass" id="pass"><br>
+			<label>이메일</label> <input type='email' name="email" id='email'><br>
+			<label>휴대폰</label> <input type='tel' name="phone" id='phone'><br> 
+			<input type='button' value='확인' onclick="proc1()"><br>
+		</form>
+
+  <div id="result1"></div>
+</div>
+</body>
+</html>

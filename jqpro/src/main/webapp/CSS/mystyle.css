@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+label{
+  /* 인라인요소에 크기 조절
+  	display : inline-block
+  */
+	display : inline-block;
+	width : 100px;
+	height : 40px;
+  }
+  
+img{
+	width : 200px;
+	height : 100px;
+	margin : 25px;
+}
+div{
+	border : 1px solid gray;
+	width : 250px;
+	height : 570px;
+	word-break:break-all;
+	display: inline-grid;
+	margin : 3px;
+	padding : 5px;
+}

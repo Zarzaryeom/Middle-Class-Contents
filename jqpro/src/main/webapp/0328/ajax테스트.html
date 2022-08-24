@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../CSS/public.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>
+$(function(){
+	$('#btn1').on('click', function(){
+		// 입력한 값 가져오기
+		idvalue = $('#id').val().trim();
+		namevalue = $('#name').val().trim();
+		
+		//vform = $('form');
+		vform = $('#ff');
+		vform.attr('action', 'first.jsp?id=' +
+							idvalue + '&name=' + namevalue);
+		
+		vform.attr('method', 'get');
+		
+		vform.submit();
+	})
+	
+	$('#btn2').on('click', function(){
+		// 입력한 값 가져오기
+		idvalue = $('#id').val().trim();
+		namevalue = $('#name').val().trim();
+		
+		var xhr = new XMLHttpRequest();
+		// 요청
+		xhr.open('get', 'first.jsp?id=' + idvalue + '&name=' + namevalue
+				, true);
+		xhr.send();
+		
+		// 응답 - 이벤트(이벤트로 줄 때에는 소문자, 속성으로 줄 때에는 대문자 포함)
+		xhr.onreadystatechange = function(){
+			//alert(this.readyState); -> 실행 확인 
+			if(this.readyState == 4 && this.status == 200){
+				res = this.responseText;  // 혹은 this.responseXML
+				$('#result1').html(res);
+			}
+		}
+	})
+	
+	$('#btn3').on('click', function(){
+		// 입력한 값 가져오기
+		idvalue = $('#id2').val().trim();
+		namevalue = $('#name2').val().trim();
+		
+		var xhr = new XMLHttpRequest();
+		
+		// 요청
+		xhr.open('post', 'first.jsp', true);
+		xhr.setRequestHeader('Content-Type',
+							 'application/x-www-form-urlencoded');
+		//xhr.send("id=" + idvalue + "&name=" + namevalue);
+		data = "id=" + idvalue + "&name=" + namevalue;
+		xhr.send(data);
+		
+				
+		// 응답
+		xhr.onreadystatechange = function(){
+			if(this.readyState == 4 && this.status == 200){
+				res = this.responseText;
+				$('#result2').html(res);
+			}
+		}
+		
+	})
+	
+})
+</script>
+</head>
+<body>
+
+<div class="box">
+    <pre>
+    </pre>
+    <h2>get - script에서 처리 후 submit</h2>
+    <form id="ff">
+    
+      <label>아이디</label>
+      <input type="text" name="id" id="id"><br>
+      
+      <label>이름</label>
+      <input type="text" name="name" id="name"><br>
+      
+      <input type="button" value="기존 방식" id="btn1">
+      <input type="button" value="ajax 방식" id="btn2">
+      
+    </form>
+    <div id="result1"></div>
+    <hr>
+    <h2>post - submit버튼을 통해 직접 처리</h2>
+    <form id="ff2" action="first.jsp" method="post">
+    
+      <label>아이디</label>
+      <input type="text" name="id" id="id2"><br>
+      
+      <label>이름</label>
+      <input type="text" name="name" id="name2"><br>
+      
+      <input type="submit" value="기존 방식">
+      <input type="button" value="ajax 방식" id="btn3">
+      
+    </form>
+    <div id="result2"></div>
+    
+    
+</div>
+</body>
+</html>

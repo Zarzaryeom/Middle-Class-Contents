@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/mystyle.js"></script>
+<style type="text/css">
+table{
+	border : 3px groove gray;
+	border-collapse : collapse;
+	text-align: center;
+	width: 800px;
+	margin : 0 auto;
+}
+
+th, td{
+	width : 200px;
+	height: 80px;
+}
+
+body, input{
+	text-align: center;
+}
+div{
+	margin-top: 20px;
+}
+h4{
+	position:relative;
+	right: 350px;
+}
+
+</style>
+</head>
+<body>
+  <h1>장바구니 페이지</h1>
+  <form>
+  <table border="1">
+    <tr>
+      <th>품목</th>
+      <th>가격</th>
+      <th>수량</th>
+      <th>합계</th>
+    </tr>
+    <tr>
+      <td>컴퓨터 세트</td>
+      <td>2,000,000원</td>
+      <td><input id="td1" type="text" placeholder="0"></td>
+      <td><input id="td1-1" type="text" placeholder="0" readonly></td>
+    </tr>
+    <tr>
+      <td>티셔츠</td>
+      <td>50,000원</td>
+      <td><input id="td2" type="text" placeholder="0"></td>
+      <td><input id="td2-1" type="text" placeholder="0" readonly></td>
+    </tr>
+    <tr>
+      <td>음악파일</td>
+      <td>1,000원</td>
+      <td><input id="td3" type="text" placeholder="0"></td>
+      <td><input id="td3-1" type="text" placeholder="0" readonly></td>
+    </tr>
+    <tr>
+      <td>영화파일</td>
+      <td>50,000원</td>
+      <td><input id="td4" type="text" placeholder="0"></td>
+      <td><input id="td4-1" type="text" placeholder="0" readonly></td>
+    </tr> 	
+  </table>  
+  <div>
+    <input type="button" value="계산" onclick="calc()">
+    <input type="button" value="구매">
+    <input type="reset" value="초기화">
+  </div>
+  <h4><a href="index.html">Back to Home</a></h4>
+  </form>
+
+</body>
+</html>

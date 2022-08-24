@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+ a{
+ 	border : 2px solid blue;
+ 	margin : 10px;
+ 	padding : 10px;
+ }
+ a:link{
+ 	color : green;
+ 	text-decoration : none;
+ 	font-size : 1.5em;
+ 	
+ }
+ a:visited{
+ 	color : red; 	
+ 	
+ }
+ a:hover{
+ 	background : lightgray;
+ 	text-decoration : underline;
+ }
+ a:active{
+ 	color : blue;
+ }
+ h3:hover{
+ 	background : yellow;
+ 	color : red;
+ 	font-size : 2.0em;
+ }
+ table{
+ 	margin : 50px;
+ 	border : 5px double orange;
+ }
+ td{
+ 	width : 200px;
+ 	height : 50px;
+ 	text-align : center;
+ }
+ #tab1 td:nth-child(2n+1){
+ 	background : pink;
+ }
+ #tab1 td:nth-child(2n){
+ 	background : skyblue;
+ }
+ #tab1 tr:nth-child(1) td{
+ 	background : black;
+ }
+ 
+ #tab2 tr:nth-child(2n+1){
+ 	background : lightgreen; 	
+ }
+ #tab2 tr:nth-child(2n){
+ 	background : yellow;
+ }
+ tr:nth-child(1) td{
+ 	font-size : 2.0em;
+ 	font-weight : bold;
+ 	background : black;
+ 	color : white;
+ }
+ 
+</style>
+</head>
+<body>
+  <h1>의사클래스</h1>
+  <h3>상태</h3>
+  <p>:link</p>
+  <p>:visited</p>
+  <p>:hover</p>
+  <p>:active</p>  
+   <a href="http://www.naver.com" target="_blank">네이버</a>
+   <a href="http://www.daum.net" target="_blank">다음</a>
+   <a href="http://www.nate.com" target="_blank">네이트</a>
+   <a href="http://www.w3schools.com" target="_blank">w3schools</a>
+   
+   <br><br>
+  <h3>구조 - 부모자식의 관계를 기반으로 한다.</h3>
+  <p>nth-child(1) : 첫번째 자식요소를 선택</p>
+  <p>nth-child(2n) : 짝수번째 자식요소를 선택</p>
+  <p>nth-child(2n+1) : 홀수번째 자식요소를 선택</p>
+  
+  <table id="tab1" border="1">
+    <tr>
+      <td>제목1</td>
+      <td>제목2</td>
+      <td>제목3</td>
+      <td>제목4</td>
+    </tr>
+    
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+     <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+     <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  
+  </table>
+  
+  <table id="tab2" border="1">
+    <tr>
+      <td>제목1</td>
+      <td>제목2</td>
+      <td>제목3</td>
+      <td>제목4</td>
+    </tr>
+    
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+     <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+     <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+      <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+      <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  
+  </table>
+  
+  
+</body>
+</html>

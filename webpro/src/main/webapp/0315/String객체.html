@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../CSS/public.css">
+<style type="text/css">
+.box input[type=button]{
+	margin : 5px;
+	width : 100px;
+}
+</style>
+<script type="text/javascript">
+
+str = "가aA 나bB 우리 나라 좋은 나라 대한 민국 만세";
+
+//unicode : a:97 A:64 0:48 
+function proc1(){
+	ch1 = str.charAt(0)
+	ch2 = str.charAt(1)
+	ch3 = str.charAt(2)
+	
+	console.log(ch1, ch2, ch3);
+	
+	ch4 = str.charAt(4)
+	ch5 = str.charAt(5)
+	ch6 = str.charAt(6)
+	
+	console.log(ch4, ch5, ch6);
+	
+	cs8 = str.charAt(8);
+	
+	out = str + "<br>";
+	out += "str.charAt(8) : " + cs8 + "<br>"; 
+	
+	document.getElementById('result1').innerHTML = out;
+}
+
+function proc2(){
+	ch1 = str.charCodeAt(0)
+	ch2 = str.charCodeAt(1)
+	ch3 = str.charCodeAt(2)
+	
+	console.log(ch1, ch2, ch3);
+	
+	ch4 = str.charCodeAt(4)
+	ch5 = str.charCodeAt(5)
+	ch6 = str.charCodeAt(6)
+	
+	console.log(ch4, ch5, ch6);
+	
+	code8 = str.charCodeAt(8);
+	
+	out = str + "<br>";
+	out += "str.charCodeAt(8) : " + code8 + "<br>";
+	
+	document.getElementById("result2").innerHTML = out;
+	
+	
+}
+function proc3(){
+	invalue = document.getElementById('intext').value;
+	
+	// 길이체크
+	out = "문자길이 : " + invalue.length + "<br>";
+	
+	
+	
+	// 공백제거
+	invalue = invalue.trim();
+	
+	out += "공백제거 trim()후 : " + invalue.length + "<br>";
+	
+	document.getElementById("result3").innerHTML = out;
+}
+
+function proc4(){
+	invalue = document.getElementById('intext').value;
+	
+	invalue = invalue.trim();
+	//5~10 길이체크	
+	if(invalue.length < 5 || invalue.length > 10){
+		alert("길이는 5~10 사이로 입력하세요.");
+		return;
+	}
+	
+	alert("정상 데이터 입니다");
+}
+
+function proc5(){
+	a1 = str.substring(2, 9);
+	
+	out = str + "<br>";
+	out += "str.substring(2, 9) : " + a1 + "<br>";
+	
+	document.getElementById('result5').innerHTML = out;
+}
+
+function proc6() {
+	//문자1 입력, 문자2 입력 우, 대
+	//입력 받은 두 문자를 포함하여 사이의 문자를 추출하라
+	in1 = prompt("첫번째 문자를 입력하세요");
+	in2 = prompt("두번째 문자를 입력하세요");
+	
+	//입력받은 문자의 위치 얻기
+	idx1 = str.indexOf(in1);
+	idx2 = str.indexOf(in2) + 1;
+	
+	//idx1이 idx2보다 작을 값이어야 하고 두 개의 값이 -1이 아니어야 한다.
+	
+	//문자 추출 - substring(), slice()
+	sub1 = str.slice(idx1, idx2);
+	
+	out = "문자열 : " + str + "<br>";
+	out += "첫번째 입력 문자 : " + in1 + "(인덱스 :" + idx1 + ") <br>";
+	out += "두번째 입력 문자 : " + in2 + "(인덱스 :" + idx2 + ") <br>";
+	out += "입력된 문자 사이의 문자  : " + sub1; 
+	
+	//출력
+	document.getElementById('result6').innerHTML = out;
+}
+
+function proc7() {
+	//문자 1 입력, 갯수 입력
+	in1 = prompt("문자를 입력하세요.");
+	len = prompt("정수를 입력하세요.");
+	
+	//문자 1의 위치
+	idx = str.indexOf(in1);
+	
+	sub = str.substr(idx, len);
+	
+	out = "문자열 : " + str + "<br>";
+	out += "입력 문자 : " + in1 + "(인덱스 :" + idx + ") <br>";
+	out += "입력 숫자 : " + len + "<br>";
+	out += "str.substr(" + idx + "," + len + ") " + sub;
+	
+	document.getElementById('result7').innerHTML = out;
+}
+</script>
+</head>
+<body>
+
+<div class="box">
+    <pre>
+    str = "우리 나라 좋은 나라 대한 민국 만세";
+    charAt(index) : index위치의 문자를 얻는다.
+    charCodeAt(index) : index위치의 Unicode값을 얻는다.
+    </pre>
+    <input type="button" value="charAt" onclick="proc1()">
+    <input type="button" value="charCodeAt" onclick="proc2()">
+  <div id="result1"></div>
+  <div id="result2"></div>
+</div>
+
+<div class="box">
+    <pre>
+    trim() : 앞뒤 공백을 제거한다.
+    입력값의 길이를 5~10사이로 입력 받도록 한다. 
+    </pre>
+    입력 <input type="text" id="intext"><br>
+    <input type="button" value="trim" onclick="proc3()">
+    <input type="button" value="trim" onclick="proc4()">
+  <div id="result3"></div>
+  <div id="result4"></div>
+</div>
+
+<div class="box">
+    <pre>
+    추출하기
+    substring(start, end) : start ~ (end-1)까지 추출
+    slice(start, end) : start ~ (end-1)까지 추출
+    substr(start, length) : start에서 시작, length만큼 추출
+    </pre>
+    <input type="button" value="substring" onclick="proc5()">
+    <input type="button" value="slice" onclick="proc6()">
+    <input type="button" value="substr" onclick="proc7()">
+  <div id="result5"></div>
+  <div id="result6"></div>
+  <div id="result7"></div>
+</div>
+</body>
+</html>

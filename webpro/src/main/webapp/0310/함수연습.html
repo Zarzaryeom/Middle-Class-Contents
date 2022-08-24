@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="../CSS/public.css" rel="stylesheet">
+<script>
+	proc1 = (opr) =>{
+		//입력값 가져오기
+		xvalue = document.querySelector("#x").value;
+		yvalue = document.querySelector("#y").value;
+		
+		//opr 비교
+		switch(opr){
+		case "+":
+			result = add();
+			break;
+		case "-":
+			result = subst();
+			break;
+		case "*":
+			result = multi();
+			break;
+		case "/":
+			result = divide();
+			break;
+		}
+		
+		str = "입력 x : " + xvalue + "<br>";
+		str += `입력 y : ${yvalue} <br>`;
+		str += `결과(${opr}) : ${result}`;
+		
+		document.getElementById("result1").innerHTML = str;
+	}
+function add(){
+	return parseInt(xvalue) + parseInt(yvalue);
+}
+
+function subst(){
+	return xvalue - yvalue;
+}
+
+function multi(){
+	return xvalue * yvalue;
+}
+
+function divide(){
+	return xvalue / yvalue;
+	
+}
+
+proc2 = () => {
+	//배열 선언
+	arr = new Array();
+	
+	//반복문
+	for(let i = 0; i < 5; i++){
+		//랜덤 발생(1~100)
+		rad = parseInt(Math.random() * 100 + 1);
+		
+		//중복검사
+		idx = arr.indexOf(rad);
+		if(idx != -1){
+			i--;
+			continue;
+		}
+		
+		//배열에 저장
+		arr[i] = rad;
+	}
+	// 출력
+	document.getElementById('result2').innerHTML += arr + "<br>";
+}
+
+proc3 = () => {
+	//배열 선언
+	arr = new Array();
+	
+	//반복문
+	while(arr.length < 5){
+		//랜덤 발생(1~100)
+		rad = parseInt(Math.random() * 100 + 1);
+		
+		//중복비교 - 제거
+		idx = arr.indexOf(rad);
+		if(idx < 0)	arr.push(rad);		
+	}
+	// 출력
+	document.getElementById('result3').innerHTML += arr + "<br>";
+}
+	
+</script>
+<style>
+  .box input[type=button]{
+  	margin : 5px 15px;
+  }
+  label{
+  	margin-left : 50px;
+  	width : 40px; 
+  	text-align: center;
+  }
+</style>
+</head>
+<body>
+<div class="box">
+    <pre>
+     x, y값을 입력받아 연산을 수행한다.
+    </pre>
+    <label>x</label>
+    <input type="text" id="x"><br>
+    <label>y</label>
+    <input type="text" id="y"><br>
+    <input type="button" value="+" onclick="proc1('+')">
+    <input type="button" value="-" onclick="proc1('-')">
+    <input type="button" value="*" onclick="proc1('*')">
+    <input type="button" value="/" onclick="proc1('/')">
+  <div id="result1"></div>
+</div>
+
+<div class="box">
+    <pre>
+    확인 버튼을 클릭하면 랜덤 수 5개를 발생하여 배열에 저장
+    반복문을 이용한다
+    배열을 출력
+    
+    중복된 수를 제거한다.(방법 1)
+    indexOf(item) : 배열에서 item의 위치를 얻는다.
+    만약에 item이 없으면 -1을 반환한다.
+    </pre>
+    <input type="button" value="확인" onclick="proc2()">
+  <div id="result2"></div>
+</div>
+
+<div class="box">
+    <pre>
+    확인 버튼을 클릭하면 랜덤 수 5개를 발생하여 배열에 저장
+    반복문을 이용한다
+    배열을 출력
+    
+    중복된 수를 제거한다.(방법 2)
+    push(item) : item을 배열에 저장한다.
+    </pre>
+    <input type="button" value="확인" onclick="proc3()">
+  <div id="result3"></div>
+</div>
+
+</body>
+</html>

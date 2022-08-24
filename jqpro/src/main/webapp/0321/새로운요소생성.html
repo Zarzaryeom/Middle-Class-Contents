@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../CSS/public.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>
+  $(function(){
+	  
+	$('#btn3').on('click', function(){
+		imag = $('<img>', {
+			'src' : '../images/Hydrangeas.jpg',
+			'alt' : 'Hydrangeas.jpg',
+			'width' : '100px',
+			'height' : '80px',
+			'click' : function(){
+				$(this).css('border', '3px solid red')
+			}
+		});
+		imag.appendTo($('#result3'));
+	})
+	
+	$('#btn2').on('click', () =>{
+		// 속성값 넣는 형식 --> 속성 : 값
+		ptag2 = $('<p></p>', {
+			'class' : 'pp', 'click' : function(){
+				$(this).css('color', 'green');
+			},
+			'text' : '별빛 같은 나의 사랑아'
+		})
+		ptag2.appendTo($('#result2'));
+	})
+	 
+	  
+	$('#btn1').on('click', function(){
+// 		ptag = $('<p class="pp" onclick=aa(this)>별빛 같은 나의 사랑아</p>');
+// 		ptag.appendTo($('#result1'));
+		
+		//스크립트로 같은 내용을 실행할 시
+		vp = document.createElement('p');
+		vp.class = "pp";
+		vp.onclick = function(){
+			
+		}
+		text = document.createTextNode('별빛 같은 나의 사랑아');
+		vp.appendChild(text);
+		document.getElementById("result1").appendChild(vp);
+	})
+	
+  })
+function aa(ptag){
+	//ptag는 dom변수이기에 ptag에 .css를 바로 붙일 수 없다.
+	$(ptag).css('color', 'red');
+}
+</script>
+</head>
+<body>
+
+<div class="box">
+    <pre>
+    새로운 요소를 생성
+    $('&lt;p class="pp" onclick=aa(this)>별빛 같은 나의 사랑아&lt;/p>');
+    </pre>
+    <input id="btn1" type="button" value="확인">
+  <div id="result1"></div>
+</div>
+
+<div class="box">
+    <pre>
+    새로운 요소를 생성
+    $('&lt;p>&lt;/p>>', {속성과 이벤트를 설정})
+    </pre>
+    <input id="btn2" type="button" value="확인">
+  <div id="result2"></div>
+</div>
+
+<div class="box">
+    <pre>
+    새로운 요소를 생성
+    확인 클릭시 이미지 태그를 생성해서 추가
+    이미지 생성시 preperties방식을 이용(중괄호 안에 속성을 넣는 방법)
+    
+    생성된 이미지를 클릭시 이미지의 테두리를 설정한다.
+    </pre>
+    <input id="btn3" type="button" value="확인">
+  <div id="result3"></div>
+</div>
+</body>
+</html>

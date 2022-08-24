@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../CSS/public.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+
+function proc2(h1tag) {
+	//h1tag : 호출시 this를 받은 스크립트변수(dom변수)
+	//h1tag.style.display = "none"; -> 스크립트 방식
+	
+	//h1tag는 jQuery메서드 hide()를 사용할 수 없다.
+	//h1tag를 jQuery객체변수로 변환
+	$(h1tag).hide();
+	
+}
+
+  $(document).ready(function(){
+	  
+	  $('#btn1').on('click', function(){
+		  vh1 = document.getElementsByTagName('h1');
+		  for(i=0; i < vh1.length; i++ ){
+		 	 vh1[i].style.color = 'red';
+		  }
+		  
+		  vh1[4].style.color = 'green';
+		  
+		  
+// 		  vjh1 = $('h1');
+//   	      vjh1.css('color', 'red');
+//   	      vjh1.eq(2).css('color', 'green');
+	  })
+	  
+// 	  vh1 = document.getElementsByTagName('h1');
+// 	  vjh1 = $('h1');
+// 	  vjh1.css('color', 'red');
+  })
+</script>
+</head>
+<body>
+
+<div class="box">
+    <pre>
+    </pre>
+    <input id="btn1" type="button" value="확인">
+  <div id="result1">
+    <h1>무궁화 꽃이 피었습니다.</h1>
+    <h1>무궁화 꽃이 피었습니다.</h1>
+    <h1>무궁화 꽃이 피었습니다.</h1>
+    <h1>무궁화 꽃이 피었습니다.</h1>
+    <h1>무궁화 꽃이 피었습니다.</h1>
+  </div>
+</div>
+
+<div class="box">
+    <pre>
+      &lt;h1 onclick="proc2(this)">
+    </pre>
+  <div id="result2">
+    <h1 onclick="proc2(this)">무궁화 꽃이 피었습니다1</h1>
+    <h1 onclick="proc2(this)">무궁화 꽃이 피었습니다2</h1>
+    <h1 onclick="proc2(this)">무궁화 꽃이 피었습니다3</h1>
+    <h1 onclick="proc2(this)">무궁화 꽃이 피었습니다4</h1>
+    <h1 onclick="proc2(this)">무궁화 꽃이 피었습니다5</h1>
+    <h1 onclick="proc2(this)">무궁화 꽃이 피었습니다6</h1>
+    <h1 onclick="proc2(this)">무궁화 꽃이 피었습니다7</h1>
+    <h1 onclick="proc2(this)">무궁화 꽃이 피었습니다8</h1>
+    <h1 onclick="proc2(this)">무궁화 꽃이 피었습니다9</h1>
+    <h1 onclick="proc2(this)">무궁화 꽃이 피었습니다10</h1>
+  </div>
+</div>
+</body>
+</html>

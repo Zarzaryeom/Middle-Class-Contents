@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../CSS/public.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>
+$(function(){
+	
+	$('#btn3').on('click', function(){
+		//h3 다음의 모든 형제의 배경색을 변경, 길이지정, 가운데정렬
+// 		$('#result3 h3~p').css('background', 'yellow') 
+// 						.css('width', '100px')
+// 						.css('text-align', 'center');
+		$('#result3 h3~p').css({'background':'yellow', 'width':'40%',
+								 'text-align':'center'})
+	    //h3 다음의 첫번째 형제의 글자를 굵게, 크게  : font-weight
+	    $('.box3 h3+p').css('font-weight', 'bold' )
+	})
+	
+	$('#btn2').on('click', function(){
+		//span태그의 배경색 변경- yellow
+		$('.box2 span').css('background', 'yellow');
+		//div의 모든 후손중  span 태그의 테두리  - red
+		$('.box2 div span').css('border', '2px solid red');
+		//div의 바로 다음 자식 span태그의 테두리  - blue
+		$('.box2 div>span').css('border', '2px solid blue');
+	})
+	
+	
+	$('#btn1').on('click', function(){
+		//h2의 자식 a 태그의 스타일 에 테두리 설정 - solid
+		
+		//스크립트 형식
+		//aa = document.getElementsByTagName('a')[0]
+		//aa.style.border=
+		
+		$('h2>a').css('border', '3px solid red');
+		
+		//h2의 후손 a태그의 스타일 배경색 을 노란색으로 변경
+		
+		//스크립트 형식
+		//document.getElementsByTagName('a')
+		//for(i=0; i < aa.length; i++){
+// 			aa[i].style.background = "yellow"
+// 		}
+		$('h2 a').css('background', 'yellow');
+	})
+})
+</script>
+</head>
+<body>
+
+<div class="box">
+    <pre>
+    </pre>
+    <input id="btn1" type="button" value="확인">
+  <div id="result1">
+    <h2> 문단 안에 <a>링크</a> 태그가 있다
+     두번째 <span><a>링크</a></span> 은 손자이다 
+	</h2>
+  </div>
+</div>
+
+<div class="box box2">
+    <pre>
+    </pre>
+    <input id="btn2" type="button" value="확인">
+  <p>이 문단에는 <span>스팬</span> 엘리먼트가 있다</p>
+	<div>
+		이 디비젼에도 <span>스팬</span> 엘리먼트가 있다
+		<p>디비젼의 내부 문단의 <span>스팬</span> 엘리먼트이다</p>
+		<div>
+		   <p>내부 디비젼의 다시 문단 속 아주 <strong>깊은곳에 </strong> <em> 숨어있는 </em> <span>스팬</span>
+			  엘리먼트도 있다</p>
+		</div>
+	</div>
+</div>
+
+<div class="box box3">
+    <pre>
+    </pre>
+    <input id="btn3" type="button" value="확인">
+  <div id="result3">
+  	<p>형제 선택자 에 대하여</p>
+ 	<h3> 꼬마버스 타요 가족을 소개 합니다</h3>
+ 	<p> 타요</p>
+ 	<p> 로기</p>
+ 	<p> 라니 </p>
+ 	<p> 가니 </p>
+  </div>
+</div>
+
+
+</body>
+</html>

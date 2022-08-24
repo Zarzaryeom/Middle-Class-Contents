@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+
+<script>
+$(function(){
+	
+	$('#btn1').on('click', function(){
+		 $('#result1 form *:disabled')
+		           .css('border', '2px solid red');
+	})
+	
+	$('#btn2').on('click', function(){
+		//$('#result2 form input[type=checkbox]')
+		str ="";
+		
+			
+		$('#result2 form :checkbox:checked').each(function(){
+			str +=  $(this).val() + "\n";
+		})
+		alert(str);
+	})
+	
+	
+	
+	$('#btn3').on('click', function(){
+		str = "";
+		
+		$('#result3 #spring option:selected').each(function(){
+			str += $(this).val() +"\n";
+		})
+		
+		alert(str);
+	})
+
+})
+</script>
+
+</head>
+<body>
+
+<div class="box">
+ <pre>
+  form *:disabled :폼안의 모든요소중 사용불가능 한 요소를 선택 
+  form *:enabled : 폼안의 모든요소중 사용가능 한 요소를 선택 
+  </pre>
+  <input type="button" value="확인" id="btn1">
+  <div id="result1">
+	 <form> 
+			<input type="text" name="id" ><br>
+			<input type="password" name="pass"  ><br>
+			
+			<select name="disSelect"  disabled>
+			      <option>Option1</option>
+			      <option>Option2</option>
+			      <option>Option3</option>
+			      <option>Option4</option>
+			</select>
+			<br>
+			
+			<textarea name="enTextarea" rows=10 cols=20 >text</textarea><br>
+			<input type="button" value="확인" 
+			        onclick="alert('Hello')" > <br>
+			
+	</form>
+  </div>
+</div>
+
+
+<div class="box">
+ <pre>
+   checkbox에서 선택한 요소를 대상으로 반복문을 사용하여
+   값을 가져온다 
+   
+   $.each('대상',function(){ })
+   $('대상').each(function(){ })
+	
+   $('#result2 form :checkbox:checked').each(function(){})
+			
+  </pre>
+  <input type="button" value="확인" id="btn2">
+  <div id="result2">
+	 <form>
+		취 미 :
+		<input type="checkbox" name="hobby" value="여행" checked >여행
+		<input type="checkbox" name="hobby" value="장기">장기
+		<input type="checkbox" name="hobby" value="바둑">바둑
+		<input type="checkbox" name="hobby" value="독서" >독서
+		<input type="checkbox" name="hobby" value="낚시">낚시<br><br>
+	</form>
+	  
+  </div>
+</div>
+
+
+<div class="box">
+ <pre>
+ 
+ </pre>
+  <input type="button" value="확인" id="btn3">
+  <div id="result3">
+	 <form>
+		봄소식 : 
+		<select name="spring" id="spring"  multiple size="6"  >
+			<option  >개나리</option>
+			<option selected>진달래</option>
+			<option>민들레</option>
+			<option selected>벚꽃</option>
+			<option>목련</option>
+			<option>철쭉</option>
+		</select>
+		
+		
+	</form>
+	 
+  </div>
+</div>
+</body>
+</html>
+
+
+
+
+
+

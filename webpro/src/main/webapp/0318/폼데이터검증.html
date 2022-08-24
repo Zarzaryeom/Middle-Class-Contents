@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../CSS/public.css">
+<script type="text/javascript">
+
+ var f= null;
+  window.onload = function(){
+	  
+	  f = document.ff; // form 검색 접근
+	  
+	  f.addEventListener('submit', datapro);
+  }
+  
+  function datapro(){
+  		//입력한 값을 가져온다.
+		namevalue = f.name.value.trim();
+		  
+		//공백 검증
+		if(namevalue.length < 1){
+			alert("이름을 입력하세요");
+			return;
+		}
+		  
+		//길이 검증
+		if(namevalue.length < 2 || namevalue.length >5){
+			alert("이름은 2 ~ 5사이입니다.");
+			return;
+		}
+		//정규식
+		namereg = /^[가-힣]{2,5}$/;
+		
+		if(!(namereg.test(namevalue))){
+			alert("이름 형식 오류");
+			return;
+		}
+		
+		alert("올바른 데이타 성공");
+		 
+  }
+	  
+// 	  f.name.value;
+// 	  f.addr.value;
+// 	  f.birthday.value;
+// 	  f.emil.value;
+// 	  f.userif.value;
+// 	  f.pass.value;
+// 	  f.phone.value;
+	  
+
+</script>
+</head>
+<body>
+
+<div class="box">
+    <pre>
+     input type=submit에 submit이벤트를 등록한다.
+     submit이벤트를 등록하려면 form이름으로 등록한다.
+     
+     form에 입력된 데이타의 길이와 형식을 검증한다
+     길이 : length    trim() : 공백제거
+     형식 : 정규식 사용
+       정규식(패턴).test(value) -> true/false리턴 
+       value.match(정규식) -> 정규칙과 일치하는 데이터를 리턴, 없으면 null리턴
+       
+    </pre>
+    <h3>회원가입</h3>
+		<form name="ff" action="form.jsp" method="post" onsubmit="return false">
+			<label>이름</label> <input type='text' name="name" id='name'><br> 
+			<label>주소</label> <input	type='text' name="addr" id='addr'><br> 
+			<label>생일</label> <input type='date' name="birthday" id='birthday'><br> 
+			<label>아이디</label> <input type='text' name="userid" id='userid'><br>
+			<label>비밀번호</label> <input type="password" name="pass" id="pass"><br>
+			<label>이메일</label> <input type='email' name="email" id='email'><br>
+			<label>휴대폰</label> <input type='tel' name="phone" id='phone'><br> 
+			<input type='submit' value='확인'><br>
+		</form>
+
+  <div id="result1"></div>
+</div>
+<script type="text/javascript">
+</script>
+</body>
+</html>

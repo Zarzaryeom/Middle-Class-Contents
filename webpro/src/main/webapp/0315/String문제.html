@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../CSS/public.css">
+<script type="text/javascript">
+function proc1() {
+	//주민번호 입력 - 110326 -4123456
+	num = prompt("주민번호 입력");
+	
+	//추출하기 11, 03, 26, 4
+	yy = num.substr(0,2); //11
+	mm = num.substr(2,2);; //03
+	dd = num.substr(4,2);; //26
+	gend = num.substr(7,1);; //4
+	
+	//태어난 년도 구하기 -- 
+	//gend비교 1,2 - 1990 / 3,4 - 2000
+	//1911 또는 2011
+	if (gend == 3 || gend == 4){
+		byear = 2000 + parseInt(yy);
+	}else{
+		byear = 1900 + parseInt(yy);
+	}
+	
+	//생년월일 2011년 3월 26일 형태 구성
+	bstr = byear + "년 " + mm + "월 " + dd + "일"; 
+	
+	//성별 구하기 - 1,3 남자  2,4 여자
+	if(gend == 1 || gend == 3){
+		gender = "남자";
+	}else{
+		gender = "여자";
+	}
+	
+	//나이 구하기 - 현재년도 - 태어난 년도
+	age = new Date().getFullYear() - byear;
+	
+	//출력 :
+// 	주민번호 - 110326-4******
+// 	생년월일 -
+// 	성별 :
+// 	나이 :
+	newnum = num.replace(num.substring(8,14),"******");
+	out = "주민번호 : " + newnum + "<br>";
+	out += "생년월일 : " + bstr + "<br>";
+	out += "성별 : " + gender + "<br>";
+	out += "나이 : " + age;
+	
+	document.getElementById('result1').innerHTML = out;
+}
+
+function proc2() {
+	input = prompt("주민번호를 입력하시오");
+	
+	sum = 0;
+	num = 2;	
+// 	for(let i = 0; i < 9; i++){
+// 		if(i != 6){
+// 		index = input.substr(i,1) * num;
+// 		sum += index;
+// 		num++;			
+// 		}
+// 	}
+// 	abc = sum
+// 	num = 2;	
+// 	for(let i = 9; i < 13; i++){
+// 		index = input.substr(i,1) * num;
+// 		sum += index;
+// 		num++
+// 	}
+	for(let i = 0; i < 13; i++){
+		if(i != 6){
+			index = input.substr(i,1) * num;
+			sum += index;
+			num++;
+			if(i == 8){
+				num = 2;
+			}
+		}
+	}
+	
+	check = 11 - (sum % 11);
+	if(check == 10){
+		check == 0;
+	}else if(check == 11){
+		check == 1;
+	}
+	
+	if(check == input.substr(13,1)){
+		result = "주민번호 유효함" 
+	}else{
+		result = "주민번호 유효하지 않음"
+	}
+	
+	newnum = input.replace(input.substring(8,14),"******");
+	
+	str = "입력한 주민번호 : " + newnum + "<br>";
+	str += "연산 결과 : " + check + "<br>";
+	str += "유효성 : " + result + "<br>";
+	
+	document.getElementById('result2').innerHTML = str;
+	
+}
+</script>
+</head>
+<body>
+
+<div class="box">
+    <pre>
+    주민등록번호를 입력 받아 생년월일과 성별을 출력하는 프로그램을 작성하시오.
+    </pre>
+    <input type="button" value="확인" onclick="proc1()">
+  <div id="result1"></div>
+</div>
+
+<div class="box">
+    <pre>
+    주민등록번호를 입력 받아 주민번호의 유효성을 검사하는 프로그램을 작성하시오.
+    </pre>
+    <input type="button" value="확인" onclick="proc2()">
+  <div id="result2"></div>
+</div>
+</body>
+</html>

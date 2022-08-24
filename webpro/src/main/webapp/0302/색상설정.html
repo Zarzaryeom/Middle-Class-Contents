@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+ div{
+ 	border : 5px double green; /* style(solid) 속성만 필수요소 */
+ 	width : 80%;
+ 	height : 100px;
+ 	margin : 5px;
+ 	font-size : 1.5em;
+ }
+ #d1{
+ 	border : 1px solid blue;
+ 	background : yellow;
+ }
+ #d2{
+ 	background : #f9e7a3;
+ }
+ #d3{
+ 	background : rgb(34,98,17);
+ }
+ #d4{
+ 	background : rgb(56%, 78%, 99%);
+ }
+ #d5{
+ 	background : rgba(34, 98, 17,0.2); /*마지막에 붙은 실수 : 투명도를 나타냄, 0으로 가까울수록 연해짐*/
+ }
+ 
+</style>
+<script>
+  function change(a){
+	  cr = parseInt(Math.random() * 256);
+	  cg = parseInt(Math.random() * 256);
+	  cb = parseInt(Math.random() * 256);
+	  
+	  a.style.background = "rgb(" + cr + "," + cg + "," + cb + ")";
+  }
+</script>
+</head>
+<body>
+<div id="d1">
+background : yellow
+</div>
+<div id="d2">
+background : #f9e7a3
+</div>
+<div id="d3">
+background : rgb(34,98,17)
+</div>
+<div id="d4">
+background : rgb(56%, 78%, 99%)
+</div>
+<div id="d5">
+background : rgba(34, 98, 17,0.2)
+</div>
+<div id="d6" onclick="change(this)">
+	onclick=change()<br>
+	background : rab(34, 98, 17, 0.2)
+</div>
+
+</body>
+</html>

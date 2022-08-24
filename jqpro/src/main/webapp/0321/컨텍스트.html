@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../CSS/public.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>
+$(function(){
+	$('#allp').on(('click'), function(){
+		$('p').css('font-size', '2.0em')
+		      .css('color', 'blue');
+	})
+	
+	$('#f1').on(('click'), function(){
+		$('p', document.forms[1]).css('color', 'red');
+	})
+	
+	$('.result').on('click', function(){
+		//this = result, result내부에 있는 p태그를 선택
+		$('p', this).css('background', 'green');
+	})
+	
+})
+</script>
+</head>
+<body>
+
+	<div class="box">
+		<pre>
+      컨택스트
+        검색 범위를 지정
+        생략시에는 문서 전체에서 검색 한다.
+        
+        $('p')
+        $('p', document.forms[1])
+        class = result인 div를 클릭하면 클릭한 div의 후손 p를 선택한다.
+    </pre>
+		<input type="button" value="전체p" id="allp"> 
+		<input type="button" value="forms[1]p" id="f1">
+		<div class="result" id="result1">
+			<p>무궁화 꽃이 피었습니다</p>
+		</div>
+
+		<p>능소화 꽃이 피었습니다,</p>
+
+		<div class="result" id="result2">
+			<p>무궁화 꽃이 피었습니다</p>
+		</div>
+
+		<form>
+			<p>forms[0]목련꽃이 피었습니다.</p>
+		</form>
+
+		<form>
+			<p>forms[1]산수우꽃이 피었습니다.</p>
+		</form>
+	</div>
+</body>
+</html>

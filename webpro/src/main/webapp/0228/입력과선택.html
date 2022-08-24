@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../CSS/public.css">
+<script type="text/javascript">
+	function subpro(){
+		//alert("왔다");
+		
+		//입력한 값을 가져온다
+		var inputId = document.getElementById("id").value;
+		var inputPass = document.getElementById("pass").value;
+		var inputArea = document.getElementById("area").value;
+		
+		console.log(inputId, inputPass, inputArea);
+		
+		//form을 이용해서 전송한다.
+		var inf = document.getElementById("inputForm");
+		inf.submit();
+	}
+</script>
+<style>
+  select{
+  	width : 200px;
+  }
+  form{
+  	border : 2px dotted red;
+  }
+</style>
+</head>
+<body>
+  <form style="border:5px solid pink;" id="inputForm" action="입력과선택.jsp" method="post">
+    <label>아이디</label>
+    <input type="text" name="id" id="id"><br>
+    
+    <label>비밀번호</label>
+    <input type="password" name="pass" id="pass"><br>
+    
+    <label>소개</label><br>
+    <textarea rows="10" cols="50" name="area" id="area"></textarea>
+    <br>
+    
+    <select name="car">
+      <option value="BMW">BMW</option>
+      <option value="SM6">SM6</option>
+      <option value="SONATA">SONATA</option>
+      <option value="Morning" selected="selected">Morning</option>
+      <!-- selected는 속성과 값 이름이 같아서 뒤에 값을 생략 가능 -->
+      <option value="아우디">아우디</option>
+    </select>
+    <br>
+    <p>여러가지 선택 가능</p>
+    <select name="food" multiple="multiple" size="5">
+    	<option value="떡볶이">떡볶이</option>
+    	<option value="불고기">불고기</option>
+    	<option value="치맥">치맥</option>
+    	<option value="피자">피자</option>
+    	<option value="라면">라면</option>
+    </select>
+    
+    <br><br>
+    <input type="button" value="전송" onclick="subpro()">
+    <input type="reset" value="취소">
+  
+  </form>
+
+</body>
+</html>

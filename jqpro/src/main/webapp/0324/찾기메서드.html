@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../CSS/public.css">
+
+<script src="../js/jquery-3.6.0.min.js"></script>
+
+<style>
+ .siblings * { 
+  display: block;
+  border: 2px solid lightgrey;
+  color: lightgrey;
+  padding: 5px;
+  margin: 15px;
+ }
+</style>
+
+<script>
+$(function(){
+	$('#next').on('click',function(){
+		$('#result1 h2').next().css({
+							'color' : 'red',
+							'border': '2px solid red'
+		})	
+	})
+	
+	$('#nextall').on('click',function(){
+		$('#result1 h2').nextAll().css({
+			'color' : 'blue',
+			'border': '2px solid blue'
+		})	
+	})
+	
+	$('#nextuntil').on('click',function(){
+		$('#result1 span').nextUntil('#result1 h3').css({
+			'color' : 'green',
+			'border': '2px solid green'
+		})	
+	})
+	
+	$('#parent').on('click', function(){
+		$('#result2 span').parent().css({
+										  'color' : 'red',
+										  'border' : '2px solid red'
+		})								
+	})
+	
+	$('#parents').on('click', function(){
+		$('#result2 span').parents().css({
+										  'color' : 'blue',
+			  							  'border' : '2px solid blue'
+		})					
+	})
+	
+	$('#parents_').on('click', function(){
+		$('#result2 span').parents('#result2 ul').css({
+										  'color' : 'green',
+			  						      'border' : '2px solid green'
+		})		
+		
+	})
+	
+	$('#parentsUntil').on('click', function(){
+		$('#result2 span').parentsUntil('#result2').css({
+			  								'color' : 'hotpink',
+				      						'border' : '2px solid hotpink'
+		})		
+	})
+	
+	//$('button').on('click', function(){	})
+	$('button[type=button]').on('click', function(){
+		$(this).parent().find('span').text('hellow~~')
+									 .css({
+										'color' : 'red',
+			  							'border' : '2px solid red'
+		})		
+	})
+	
+	
+	
+})
+</script>
+
+
+</head>
+<body>
+<div class="box">
+    <pre>
+    </pre>
+    <input type="button" value="next" id="next">
+    <input type="button" value="nextAll" id="nextall">
+    <input type="button" value="nextUntil" id="nextuntil">
+  <div id="result1" class="siblings">
+    <div> div (parent)
+      <p>p</p>
+      <span>span</span>
+      <h2>h2</h2>
+      <h3>h3</h3>
+      <p>p</p>
+    </div>
+  </div>
+</div>
+
+
+<div class="box">
+  <input type="button" value="parent" id="parent">
+  <input type="button" value="parents" id="parents">
+  <input type="button" value="parents_" id="parents_">
+  <input type="button" value="parentsUntil" id="parentsUntil">
+
+
+  <div id="result2"  class="siblings">
+    <div style="width:500px;"> div (great-grandparent)
+      <ul>ul (grandparent)  
+        <li>li (direct parent)
+        <span>span</span>
+        </li>
+      </ul>   
+    </div>
+  </div>
+</div>
+
+<div class="box">
+  <div id="result3" class="siblings">
+    <div style="width:500px;"> div (great-grandparent)
+      <ul>ul (grandparent)  
+        <li>li (direct parent)
+          <span>span</span>
+          <p>p</p>
+          <button type="button">찾기</button>
+        </li>
+      </ul>   
+    </div>
+  </div>
+  
+  <div id="result4" class="siblings">
+    <div style="width:500px;"> div (great-grandparent)
+      <ul>ul (grandparent)  
+        <li>li (direct parent)
+          <span>span</span>
+          <p>p</p>
+          <button type="button">찾기</button>
+        </li>
+      </ul>   
+    </div>
+  </div>
+</div>
+</body>
+</html>

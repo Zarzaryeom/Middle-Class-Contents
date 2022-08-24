@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../CSS/public.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+<script>
+$(function(){
+	// 우편번호 찾기
+	$('#btn1').on('click', function(){
+		// 입력한 값 가져온다
+		dongvalue = $('#dong').val().trim();
+		console.log(dongvalue);
+		
+		//서버로 전송
+		$.ajax({
+			url : '/jqpro/ZipSearch.do',
+			type : 'get',
+			data : {"dongValue" : dongvalue},
+			success : function(res){
+				str = "<table>";
+				str += "<tr><th>우편번호</th>";
+				str += "<th>주소</th>";
+				str += "<th>번지</th></tr>"
+				$.each(res, function(i, v){
+					
+					var bunji = v.bunji;
+					if(typeof bunji == "undefined") bunji = "";
+					
+					str += "<tr class='ziptr'><td>" + v.zipcode + "</td>";
+					str += "<td>" + v.sido + v.gugun + v.dong + "</td>";
+					str += "<td>" + bunji + "</td></tr>";
+				})
+				str += "</table>";
+				$('#result1').html(str);
+			},
+			error : function(xhr){
+				alert("상태 : " + xhr.status)
+			},
+			dataType : 'json'
+			
+		})
+	})
+	
+	// 우편번호 검색 결과에서 선택하여 부모창으로 값을 넘기기
+	$(document).on('click', '.ziptr', function(){
+		zipcode = $("td:eq(0)", this).text();
+		addr = $("td:eq(1)", this).text();
+		
+		$('#uzip', opener.document).val(zipcode);
+		$('#uadd1', opener.document).val(addr);
+		
+		window.close();
+	})
+})
+</script>
+<style>
+#dong{
+	margin-left : 20px;
+}
+
+.ziptr:hover{
+	background: lime;
+}
+</style>
+
+</head>
+<body>
+
+<div class="box">
+  <input type="text" id="dong">
+  <input type="button" value="확인" id="btn1">
+  <div id="result1"></div>
+</div>
+</body>
+</html>

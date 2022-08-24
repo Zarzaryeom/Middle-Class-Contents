@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+img{
+	width : 200px;
+	height : 150px; 
+}
+
+img[title]{ /*같은 의미지만 표현이 다르다 */
+	border : 5px solid green;	
+}
+img.imc{
+	border : 2px solid red;
+}
+img[class=imc]{
+	border : 8px double blue;
+}
+
+#imd{} /*같은 의미지만 표현이 다르다 */
+img[id=imd]{}
+
+input[type=text]{}
+input[tyoe=password]{}
+
+</style>
+</head>
+<body>
+ <p>이미지모음</p>
+ <input type="text"><br>
+ <input type="password"><br><br>
+ <img class="imc" src="../images/Koala.jpg" alt="Koala.jpg"> <!-- title : 마우스를 올려 놓으면 나타나는 글자 -->
+ <img class="imc" src="../images/flower-1.jpg" alt="flower-1.jpg">
+ <img class="imc" src="../images/spongebob.png" alt="spongebob.png" title="spongebob.png">
+ <img id="imd" src="../images/Penguins.jpg" alt="Penguins.jpg" title="Penguins.jpg">
+ <img src="../images/Tulips.jpg" alt="Tulips.jpg" title="Tulips.jpg">
+</body>
+</html>

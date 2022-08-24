@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../CSS/public.css">
+<style>
+  h1{
+  	margin : 30px; 
+  }
+</style>
+</head>
+<body>
+  <h1>이메일 전송화면</h1>
+  <form action="연습1.jsp" method="post">
+    <label>이름</label>
+    <input type="text" name="name" id="name"><br>
+    
+    <label>이메일</label>
+    <input type="text" name="email" id="email"><br>
+    
+    <label>내용</label><br>
+    <textarea rows="5" cols="30" name="area" id="area"></textarea>
+    <br><br>
+    
+    <input type="submit" value="전송">
+    <input type="reset" value="재설정">
+  
+  </form>
+  
+  <h1>회원 가입 화면</h1>
+  <form action="연습2.jsp" method="post">
+    <label>이름</label>
+    <input type="text" name="name2" id="name2"><br>
+    
+    <label>주소</label>
+    <input type="text" name="addr" id="addr"><br>
+    
+    <label>이메일</label>
+    <input type="text" name="email2" id="email2"><br>
+    
+    <input type="radio" name="gender" value="Male">Male<br>
+    <input type="radio" name="gender" value="Female">Female<br><br>
+    
+    <input type="submit" value="send">
+    <input type="reset" value="원래대로">
+    
+    
+  
+  </form>
+</body>
+</html>

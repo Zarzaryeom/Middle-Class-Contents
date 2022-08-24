@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../CSS/public.css">
+<style type="text/css">
+.box div{
+	height : 100px;
+	font-size : 2.0em;
+	text-align: center;	
+	padding-top : 30px;
+}
+</style>
+<script type="text/javascript">
+function proc1() {
+	setTimeout(function(){
+		vres1 = document.getElementById("result1");
+		vres1.style.background = "red";
+	}, 500);
+}
+
+function proc2(but) {
+	//확인버튼을 감추기
+	but.style.display = "none";
+	
+	globut = but; // but변수를 전역변수로 만들어 줌
+	
+	a = setInterval(function(){
+		console.log(a);
+		vres2 = document.getElementById("result2");
+		cr = parseInt(Math.random() * 256);
+		cg = parseInt(Math.random() * 256);
+		cb = parseInt(Math.random() * 256);
+		
+		//vres2.style.background = `rgb(${cr},${cg},${cb})`;
+		
+		//16진수로 변환시켜서 색 넣기
+		vres2.style.background = "#" + cr.toString(16) + cg.toString(16)
+								+ cb.toString(16);
+	}, 500);
+}
+
+function stop() {
+	clearInterval(a); // a 함수를 종료시키는 명령
+	
+	//확인 버튼 표시하기
+	globut.style.display = "inline";
+}
+</script>
+</head>
+<body>
+
+<div class="box">
+    <pre>
+    setTimeout(fn, millisec);
+    millisec에 지정된 시간이 경과하면 fn이 수행되고 종료한다.    
+    </pre>
+    <input type="button" value="확인" onclick="proc1()">
+  <div id="result1">
+  	무궁화 꽃이 피었습니다.
+  </div>
+</div>
+
+<div class="box">
+    <pre>
+    setInterval(fn, millisec)
+    millisec에 지정된 시간이 경과할 때마다 fn이 수행된다.
+    </pre>
+    <input type="button" value="확인" onclick="proc2(this)">
+    <input type="button" value="종료" onclick="stop()">
+  <div id="result2">
+  	능소화 꽃이 피었습니다.
+  </div>
+</div>
+
+</body>
+</html>

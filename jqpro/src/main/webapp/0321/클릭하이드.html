@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../CSS/public.css">
+<!-- 절대 경로를 만들 때 webapp는 연결하지 않는다. -->
+<script src="http://localhost/jqpro/js/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function(){
+	  hlist = document.getElementsByTagName('h1');
+	  for(i=0; i<hlist.length; i++){
+		  hlist[i].addEventListener('click', fhide); //함수호출형식이 아닌 이름만 준다.
+	  }
+	  
+	  function fhide(){
+		  //this를 자동으로 사용가능
+		  $(this).hide()
+	  }
+  })
+</script>
+</head>
+<body>
+
+<div class="box">
+    <pre>
+      h1의 클릭이벤트를 일괄 등록하기
+      h1.addEventListener('click', function이름)
+    </pre>
+  <div id="result1">
+    <h1>무궁화 꽃이 피었습니다1</h1>
+    <h1>무궁화 꽃이 피었습니다2</h1>
+    <h1>무궁화 꽃이 피었습니다3</h1>
+    <h1>무궁화 꽃이 피었습니다4</h1>
+    <h1>무궁화 꽃이 피었습니다5</h1>
+    <h1>무궁화 꽃이 피었습니다6</h1>
+    <h1>무궁화 꽃이 피었습니다7</h1>
+    <h1>무궁화 꽃이 피었습니다8</h1>
+    <h1>무궁화 꽃이 피었습니다9</h1>
+    <h1>무궁화 꽃이 피었습니다10</h1>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../CSS/public.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>
+$(function(){
+	//delegate 형식
+	$(document).delegate('.btn1', 'click', function(){
+	//$(document).on('click', '.btn1', function(){
+		vbtn = $('<input>', {'type' : 'button', 'value' : '확인', 'class' : 'btn1'})
+		$(vbtn).appendTo($('#butadd'));
+	})
+	
+	$('#btn2').on('click', function(){
+		//$(document).off('click', '.btn1');
+		$(document).undelegate('.btn1', 'click' );
+	})
+})
+</script>
+</head>
+<body>
+
+<div class="box">
+    <pre>
+    </pre>
+  <div class="result1">
+    <input type="button" value="확인" class="btn1">
+  </div>
+  
+  <input type="button" value="취소" id="btn2">
+  <br><br>
+  	
+  <div class="result1" id="butadd"></div>
+</div>
+</body>
+</html>

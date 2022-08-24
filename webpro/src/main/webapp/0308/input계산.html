@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../CSS/public.css">
+<script>
+function calc(op){
+	//입력한 두 수의 값(value)을 가져온다.
+// 	let value1 = document.getElementById('su1').value
+// 	let value2 = document.getElementById('su2').value
+
+	let value1 = document.querySelector('#su1').value
+	let value2 = document.querySelector('#su2').value
+	
+	switch(op){
+	case "+":
+		result = parseInt(value1) + parseInt(value2);
+		break;
+	case "-":
+		result = value1 - value2;
+		break;
+	case "*":
+		result = value1 * value2;
+		break;
+	case "/":
+		result = value1 / value2;
+		break;
+	}
+
+	//str = value1 + op + value2 + " = " + result;
+	//백틱으로 설계하기 
+	str = `${value1} ${op} ${value2} = ${result}`;
+	
+	//textarea검색 - 출력 - value
+	document.getElementsByTagName('textarea')[0].value = str;
+	
+	//입력 받은 수를 지우기
+	document.querySelector('#su1').value = "";
+	document.querySelector('#su2').value ="";
+	
+}
+</script> 
+</head>
+<body>
+<pre>
+입력받은 수를 script에서 얻어서  - value 처리 한다
+처리한 결과를 textarea요소에 출력 - value
+
+템플릿 리터럴(정해져 있는 문자 형식)
+백틱(`)을 이용한 문자열과 변수의 값을 처리하는 리터럴 -> '문자열 ${변수} 문자열 &{변수},....'
+</pre>
+<label>수1</label>
+<input type="text" id="su1"><br>
+
+<label>수2</label>
+<input type="text" id="su2"><br>
+
+<br>
+<input type="button" value="+" onclick="calc('+')">
+<input type="button" value="-" onclick="calc('-')">
+<input type="button" value="*" onclick="calc('*')">
+<input type="button" value="/" onclick="calc('/')">
+<br><br>
+
+<textarea rows="5" cols="20"></textarea>
+
+
+</body>
+</html>

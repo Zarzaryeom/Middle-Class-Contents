@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../CSS/public.css">
+<script>
+	function proc(){
+		var in1 = parseInt(prompt("정수 입력"));
+		var in2 = parseInt(prompt("정수2 입력"));
+		
+		var hap = in1 + in2;
+		
+// 		str = "입력 1 " + in1 + "\n";
+// 		str += "입력 2 " + in2 + "\n";
+// 		str += "덧셈 결과 : " + hap;
+		
+// 		alert(str);
+		
+// 		console.log(str); // 콘솔에 출력
+		
+		//document.write(str);
+		
+		str = "입력 1 " + in1 + "<br>";
+		str += "입력 2 " + in2 + "<br>";
+		str += "덧셈 결과 : " + hap;
+		
+		//div를 검색
+		var vd = document.querySelector("div");
+		vd.innerHTML = str;
+	}
+	
+	function calc(abc){
+		//두 수를 입력
+		su1 = prompt("정수 입력"); // (+연산을 제외하고 나머지 연산은 parseInt가 불필요하다.)
+		su2 = prompt("정수2 입력");
+		
+		//백틱 이용한 예시
+// 		str = `입력1 : ${su1} <br> `;
+// 		str += `입력2 : ${su2} <br>`;
+// 		str += `${su1} ${abc} ${su2} = ${result} <br>`;
+		
+		//abc의 값(+, -, /, *)을 비교
+		if(abc == "+"){
+			result = parseInt(su1) + parseInt(su2);
+			st = "입력 1 : " + su1 + "<br>";
+			st += "입력 2 : " + su2 + "<br>";
+			st += "덧셈 결과 : " + result;
+		}else if(abc == "-"){
+			result = su1 - su2;
+			st = "입력 1 : " + su1 + "<br>";
+			st += "입력 2 : " + su2 + "<br>";
+			st += "뺄셈 결과 : " + result;
+		}else if(abc == "*"){
+			result = su1 * su2;
+			st = "입력 1 : " + su1 + "<br>";
+			st += "입력 2 : " + su2 + "<br>";
+			st += "곱셈 결과 : " + result;
+		}else if(abc == "/"){
+			result = su1 / su2;
+			st = "입력 1 : " + su1 + "<br>";
+			st += "입력 2 : " + su2 + "<br>";
+			st += "나눗셈 결과 : " + result;
+		}
+		
+		//id=res인 곳에 출력한다.
+		var vd2 = document.getElementById("res");
+		vd2.innerHTML = st;
+		
+	}
+</script>
+</head>
+<body>
+  <pre>
+  버튼을 클립하면 두개의 수를 입력한다 (prompt 이용)
+  prompt함수의 리턴겨로가 값은 String이다.
+  입력받은 두 수를 더해서 출력한다 - div요소 더하기 위해서 정수로 변환이 필요 - praseInt()
+  
+  요소검색 - es6 - 단수로 검색
+  document.querySelector("#aa")  -> 아이디 검색
+  document.querySelector(".bb")  -> 클래스 검색
+  document.querySelector("div")  -> 태그 검색
+   ※ 클래스와 태그가 복수개가 있어도 가장 처음에 찾아낸 요소의 값만을 가져온다. 
+  
+  </pre>
+  <input type="button" value="확인" onclick="proc()">
+  <br>
+  <div></div>
+  <hr>
+  <input type="button" value="+" onclick="calc('+')">
+  <input type="button" value="-" onclick="calc('-')">
+  <input type="button" value="*" onclick="calc('*')">
+  <input type="button" value="/" onclick="calc('/')">
+  <br>
+  <div id="res"></div>
+</body>
+</html>

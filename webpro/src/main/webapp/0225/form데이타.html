@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+form{
+	border : 1px solid blue;
+	margin : 30px;
+	padding : 30px;
+	width : 50%;
+}
+
+input[type=image]{
+	width : 50px;
+	height : 50px;
+}
+
+label{
+/* 인라인요소에 크기 조절
+	display : inline block */
+	display : inline-block;
+	width : 100px;
+	height : 40px;
+}
+</style>
+
+<script type="text/javascript">
+  function send(){
+	  //폼에서 입력한 id와 pass값을 가져온다
+	  //변수는 타입이 없다
+// 	  //서버로 보내기1 - form 객체가 필요 -- get 방식으로 이동
+// 	  var vid = document.getElementById("id").value;
+// 	  var vpass = document.getElementById("pass").value;
+// 	  var vform = document.getElementById("ff"); //form 자체를 가져오는 것이기에 값을 가져오는 value를 사용하지 않음
+// 	  vform.action="form.jsp?id="+vid+"&pass="+vpass;
+// 	  vform.method="get";
+// 	  vform.submit();
+	  
+	  //서버로 보내기2 -- post방식으로 이동
+	  var vform = document.getElementById("ff");
+	  vform.submit();
+  }
+</script>
+</head>
+<body>
+  <h2>form전송 - get방식</h2>
+  <form action="form.jsp" method="get">
+  	<label>아이디</label> <input type="text" name="id"><br>
+  	
+  	<label>비밀번호</label> <input type="password" name="pass"><br>
+  	
+  	<input type="submit">
+  
+  </form>
+  
+  <h2>form전송 - post방식</h2>
+  <form action="form.jsp" method="post">
+  	<label>아이디</label> <input type="text" name="id"><br>
+  	
+  	<label>비밀번호</label> <input type="password" name="pass"><br>
+  	
+  	<input type="submit">
+  	<input type="reset">
+  	<input type="image" src="../images/flower-1.jpg" alt="전송">
+  </form>
+  
+  <h1>&lt;input type = ""button"></h1>
+  <p>input type=button일때는 기능을 별도로 부여해야 한다.</p>
+  <p>기능을 부여할 때는 onclick="함수이름()" 함수호출이 이루어진다.</p>
+  <p>Java script에서 함수를 정의하고 입력요소의 값을 script에서 처리 후 서버로 전송한한다.</p>  
+    <form id="ff" action="form.jsp" method="post">
+  	<label>아이디</label> <input type="text" name="id" id="id"><br>
+  	
+  	<label>비밀번호</label> <input type="password" name="pass" id="pass"><br>
+  	
+  	<input type="button" value="전송" 
+  		onclick="send()">
+  	<input type="reset">
+  </form>
+  
+  
+</body>
+</html>

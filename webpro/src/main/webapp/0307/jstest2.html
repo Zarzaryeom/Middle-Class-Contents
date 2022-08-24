@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../CSS/public.css">
+<style>
+div{
+	width : 100%;
+	height : 200px;
+	border : 1px solid red;
+	background: yellow;
+}
+</style>
+<script>
+	var now = new Date();
+	document.write(now + "<br>");
+	
+	function proc(){
+		document.write("Hello");
+		
+	}
+</script>
+</head>
+<body>
+ <br><br>
+ <pre>
+  script 의 코딩위치에 따라서 실행순서가 정해진다.
+  
+  HTML태그의 onclick이벤트에 의해 실행되는 script의 함수는 가장 나중에 실행된다.
+  가장 나중에 실행되는 함수에서 document.write로 출력하지 않는다.
+ </pre>
+ <input type="button" value="확인" onclick=proc()>
+ <div></div>
+</body>
+</html>

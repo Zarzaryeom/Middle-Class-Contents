@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka&family=Noto+Serif+KR:wght@300&display=swap" rel="stylesheet">
+<script src="../js/mystyle.js">
+</script>
+<style>
+body{
+	min-width : 1380px;	
+	box-sizing : border-box;
+	padding : 10px;
+}
+header{
+	width : 100%;
+	height : 150px;
+	border : 1px ridge #D8D8D8;
+	background-color: #D8D8D8;
+}
+header img{
+	margin-left : 20px;
+	width : 100px;
+	height : 100px;	
+	border-radius: 50px;	
+}
+nav{
+	border-top : 2px dotted green;
+	border-bottom: 2px solid green;
+	display : flex;
+	justify-content: space-around;
+	flex-wrap: nowrap;
+}
+ul{
+	 display : inline;	 
+}
+nav li{
+	float: left;
+	list-style-type: none;
+	margin : auto 60px;		
+	font-family: 'Fredoka', sans-serif;
+	font-size : 1.5em;	
+	font-weight : bold;
+}
+a{
+	text-decoration-line : none;
+}
+
+#left{
+	float : left;
+	margin : 1px;
+	background: skyblue;
+}
+
+#left li{
+	list-style-type: none;
+	text-align : left;
+	margin : 10px;
+	width : 150px;	
+	background: skyblue;
+}
+#left input{
+	border : 1px solid skyblue;
+	color : black;
+	background : none;
+	width: auto;
+	margin : 12px;
+	font-weight : bold;	
+	font-family: 'Noto Serif KR', serif;
+	text-align: center;
+}
+#left input:hover{color : white;}
+
+#main{
+	position:relative;
+	float : left;
+	width : 100%;
+	margin : 1px 20px;;
+	padding: 30px;
+}
+
+iframe{
+	width : 100%;
+	height : 620px;
+}
+
+#right{
+	float : right;
+	width : 250px;
+	margin : 1px;	
+}
+#right fieldset{
+	background: #E0F8F7;
+	font-family: 'Noto Serif KR', serif;
+}
+#right fieldset input[type=submit], input[type=reset]{
+	margin-left: 10px;
+	width : 75px;
+}
+#right a:hover{color:#DF013A;}
+
+
+footer{
+	width : 100%;
+	height : 60px;
+	background: black;
+	text-align: center;
+	color : white;
+	padding-top: 1px;
+	margin-top: 30px;
+	clear : both;
+}
+
+.main{	
+	flex-grow : 1;
+}
+
+#center{
+	display : flex;
+	flex-direction: row;
+	align-items: stretch;
+	justify-content: space-around;
+}
+
+</style>
+</head>
+<body>
+  <header>
+    <h1>
+      <img src="../images/shopping.jpg" alt="shopping.jpg">
+      <a href="">Web Shop</a>
+    </h1>
+  </header>
+  
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html">About Us</a></li>
+      <li><a href="index.html">News</a></li>
+      <li><a href="index.html">My Account</a></li>
+      <li><a href="index.html">Contacts</a></li>
+    </ul>
+  </nav>
+  <div id="center">
+  <aside id="left" class="main">
+    <ul>      
+      <li><input type="button" value="🖥️_컴퓨터" onclick="page('컴퓨터')"> </li>
+      <li><input type="button" value="🧥_의류" onclick="page('의류')"> </li>
+      <li><input type="button" value="🎿_스포츠/레져" onclick="page('스포츠/레져')"> </li>
+      <li><input type="button" value="🛋️_가구인테리어" onclick="page('가구인테리어')"> </li>
+      <li><input type="button" value="🍎_식품" onclick="page('식품')"> </li>
+    </ul>
+  </aside>
+  <section id="main" class="main">
+    <article id = "article1">
+      <iframe id="mainpage" src="computer.html" name="ifr">        
+      </iframe>
+     </article>a
+  </section>
+  
+  <aside id="right" class="main">
+    <div id="shopcart">
+    <fieldset>
+    <legend><h4>✔️Shopping Cart</h4></legend>      
+      현재 쇼핑카트에 물품이 없습니다.<br><br>
+      <a href="shopcart.html">쇼핑카트 보기</a>
+      <br><br>
+      </fieldset>
+    <br><br><br><br>
+    <fieldset>
+    <legend><h4>✔️Log In</h4></legend>      
+      <form action="#">
+      <label>아이디</label> <input type="text" name="id"> <br><br>
+      <label>패스워드</label> <input type="text" name="pass"> <br><br>
+      <input type="submit"> <input type="reset"> <br><br>
+      <a href="회원가입register.html">회원가입</a> <a href="">비밀번호 분실</a>
+                  
+      </form>
+      <br>
+      </fieldset>
+    </div>
+  </aside>
+  </div>
+  <footer>
+  <h4>Copyright (c)2022 Lee B.J</h4>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Test">
+
+	<insert id="insertLprod" parameterClass="lprodVo">
+		insert into Lprod(lprod_id, lprod_gu, lprod_nm)
+		       values(#lprod_id#, #lprod_gu#, #lprod_nm#)
+	</insert>
+	
+	<select id="selectMaxLprodId" resultClass="int">
+		select max(lprod_id) as lprod_id from Lprod
+	</select>
+	
+	<select id="checkLprodGu" resultClass="String" parameterClass="String">
+		select lprod_id from Lprod where lprod_gu = #lprod_gu#
+	</select>
+
+
+</sqlMap>

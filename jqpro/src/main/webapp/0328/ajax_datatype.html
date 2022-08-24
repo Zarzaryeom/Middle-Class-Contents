@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../CSS/public.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>
+$(function(){
+	
+	var xhr = new XMLHttpRequest();
+	
+	$('#text').on('click', function(){
+		// 요청
+		xhr.open('get', 'text.jsp', true);
+		xhr.send();
+		
+		// 응답
+		xhr.onreadystatechange = function(){
+			if(this.readyState == 4 && this.status == 200){
+				res = this.responseText;
+				//res = 홍길동/개나리/진달래/무궁화/라일락/수선화/능소화
+				
+				arr = res.split("/");
+				str = "<ul>";
+				$.each(arr, function(i){
+					str += "<li>" + arr[i] + "</li>";
+				})
+				str += "</ul>";
+				$('#result1').html(str);
+			}
+		}
+	})
+	
+	$('#jarr').on('click', function(){
+		// 요청
+		xhr.open('get', 'jsonArr.jsp', true);
+		xhr.send();
+		// 응답
+		xhr.onreadystatechange = function(){
+			if(this.readyState == 4 && this.status == 200){
+				res = JSON.parse(this.responseText)
+				//res는 배열이다, 반복문을 이용해서 ol로 출력한다.
+				str = "<ol>";
+				$.each(res, function(i) {
+					str += "<li>" + res[i] + "</li>";
+				})
+				str += "</ol>";
+				$('#result2').html(str);
+			}
+		}
+	})
+		
+		$('#jobj').on('click', function(){
+			// 요청
+			xhr.open('get', 'jsonObj.jsp', true);
+			xhr.send();
+			// 응답
+			xhr.onreadystatechange = function(){
+				if(this.readyState == 4 && this.status == 200){
+					res = JSON.parse(this.responseText)
+// 					str = "아이디 : " + res["id"] + "<br>";
+// 					str += "이름 : " + res["name"]+ "<br>";
+// 					str += "주소 : " + res["addr"]+ "<br>";
+// 					str += "전화번호 : " + res["hp"];
+					
+					str = "아이디 : " + res.id + "<br>";
+					str += "이름 : " + res.name+ "<br>";
+					str += "주소 : " + res.addr+ "<br>";
+					str += "전화번호 : " + res.hp;
+					$('#result3').html(str);
+				}
+			}
+		})
+		
+		$('#jobarr').on('click', function(){
+			// 요청
+			xhr.open('get', 'jsonObjArr.jsp', true);
+			xhr.send();
+			
+			//응답
+			xhr.onreadystatechange = function(){
+				if(this.readyState == 4 && this.status == 200){
+					res = JSON.parse(this.responseText);
+					
+					str = "";
+					$.each(res, function(i){
+						str += i + 1 + "번" + "<br>";
+						str += "아이디 : " + res[i].id + "<br>";
+						str += "이름 : " + res[i].name + "<br>";
+						str += "주소 : " + res[i].addr + "<br>";
+						str += "전화번호 : " + res[i].hp + "<br>"; 
+						str += "------------------------------<br>"
+					})
+					$('#result4').html(str);
+				}
+			}
+		})
+	})
+</script>
+<style>
+.box div{
+	width : 20%;
+	float : left;
+}
+br{
+	clear : both;
+}
+.box .d1{
+	width : 15%;
+}
+
+.box .d2{
+	width : 25%;
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="box">
+    <pre>
+    </pre>
+    <input type="button" value="text" id="text">
+    <input type="button" value="jsonarr" id="jarr">
+    <input type="button" value="jsonobj" id="jobj">
+    <input type="button" value="mixdata" id="jobarr">
+    <br>
+  	<div class="d1" id="result1"></div>
+  	<div class="d1" id="result2"></div>
+  	<div class="d2" id="result3"></div>
+  	<div class="d2" id="result4"></div>
+  	<br>
+</div>
+</body>
+</html>

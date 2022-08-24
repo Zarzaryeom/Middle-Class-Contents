@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+
+<style>
+table{
+  border : 1px solid blue;
+}
+td{
+  width : 250px;
+  height : 70px;
+  text-align: center;
+  
+}
+</style>
+
+<script>
+$(function(){
+	$('#btn1').on('click', function(){
+		$('li:first').css('background', 'yellow')
+		
+		$('li:first-child').css('border', 'solid red');
+	})
+	
+	$('#btn2').on('click', function(){
+		
+		$('td:first-child').css('background','#FF7A85')
+		$('td:nth-child(1)').css('background','#FF7A85');
+		
+		
+		$('td:nth-child(2)').css('background','#FFBEC3');
+		
+		
+		$('td:last-child').css('background','#FFF0F5');
+		$('td:nth-child(3)').css('background','#FFF0F5');
+		
+		
+		$('tr:first-child td')
+		          .css({ 'background': 'black',
+		        	  'color': 'white',
+		        	  'font-size': '2.0em'})
+		
+		
+	})
+	
+})
+</script>
+
+</head>
+<body>
+
+<div class="box">
+ <pre>
+    :first : 전체 중에 첫번째 요소 한개만 선택 
+    :first-child :각 부모구룹에서 첫번째 자식인 요소를 선택 
+    
+    :last : 전체 중에 마지막 요소 한개만 선택
+    :last-child: 각 부모구룹에서 마지막 자식인 요소를 선택
+  </pre>
+  <input type="button" value="확인" id="btn1">
+  <div id="result1">
+    <h1>여자에게 인기있는 남자들</h1>
+    <ol>
+      <li>능력있는 남자</li>
+      <li>착한남자</li>
+      <li>잘생긴남자</li>
+      <li>돈많은 남자</li>
+      <li>프로그래머</li>
+    </ol>
+  
+   <h1>남자에게 인기있는 여자들</h1>
+    <ol>
+      <li>예쁜여자</li>
+      <li>능력있는여자</li>
+      <li>돈많은 여자</li>
+      <li>귀여운 여자</li>
+      <li>착한 여자</li>
+    </ol>
+  
+  </div>
+</div>
+
+
+<div class="box">
+ <pre>
+   
+  </pre>
+  <input type="button" value="확인" id="btn2">
+  
+  <div id="result2">
+     <table border="1">
+        <tr>
+          <td>이름</td>
+          <td>주소</td>
+          <td>전화번호</td>
+        </tr>
+        
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+     </table>
+  </div>
+  
+</div>
+</body>
+</html>
+
+
+

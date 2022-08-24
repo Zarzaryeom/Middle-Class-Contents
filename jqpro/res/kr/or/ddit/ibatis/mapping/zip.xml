@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+	
+<sqlMap namespace="zip">
+
+	<select id="zipList" resultClass="zipVO" parameterClass="String">
+		select * from ziptb
+		 where dong like '%'||#data#||'%'
+	</select>
+	
+	<!-- 시 데이터 뽑기 -->
+	<select id="selectSido" resultClass="String">
+		select distinct sido from ziptb	
+	</select>
+	
+	<!-- 선택한 시에 해당하는 구,군 데이터 뽑기 -->
+	<select id="selectGugun" resultClass="String" parameterClass="String">
+		select distinct gugun from ziptb 
+		 where sido = #sido#	
+	</select>
+	
+	<!-- 선택한 시, 구, 군에 해당하는 데이터 뽑기 -->
+	<select id="selectDong" resultClass="String" parameterClass="Map">
+		select distinct dong from ziptb	
+		 where sido = #sido# and gugun = #gugun#
+	</select>
+	
+	<!-- 선택한 데이터들에 해당하는 전체 지역 뽑기 -->
+	<select id="selectResult" resultClass="zipVO" parameterClass="Map">
+		select * from ziptb
+		 where sido = #sido# and gugun = #gugun# and dong like #dong#||'%'
+	</select>
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</sqlMap>

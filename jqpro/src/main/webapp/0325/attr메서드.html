@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../CSS/public.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+//  var count = 0;
+$(function(){
+	$('#btn1').on('click', function(){
+// 		$('img').attr('title', '이미지');
+// 		count = 0;
+		$('img').attr('title', function(){
+			a = $(this).attr('src')
+			
+			// src의 값을 가져온다
+			vsrc = 0;
+			
+			// vsrc에서 마지막 / 의 위치 값을 얻는다.
+			start = +1;
+			// vsrc에서 마지막 . 의 위치 값을 얻는다.
+			end = 0;
+			
+			// vsrc에서 start ~ end 사이의 문자를 추출
+			str = a.substring(a.lastIndexOf("/") + 1, a.lastIndexOf("."))
+			
+			return str;
+		})
+	})
+	
+	$('img').on('click', function(){
+		// 1. title 속성을 지운다.
+		$(this).removeAttr('title');
+	})
+	
+	
+	$('img').on('mouseover', function(){
+		// 1. border 테두리를 설정한다.(addClass를 이용한다.)
+// 		if(count < 10){
+		$(this).addClass('border');
+// 		}
+// 		count++;
+	})
+	
+	$('img').on('mouseout', function(){
+		$(this).removeClass('border');
+	})
+	
+})
+</script>
+<style>
+img{
+	width : 100px;
+	height : 100px;
+}
+.border{
+	border : 2px solid red;
+}
+</style>
+</head>
+<body>
+
+<div class="box">
+    <pre>
+    </pre>
+    <input type="button" value="확인" id="btn1">
+  <div id="result1">
+  	<img src="../images/sw_on.png" alt="sw_on.png">
+  	<img src="../images/coffee1.jpg" alt="coffee1.jpg">
+  	<img src="../images/JSP2_1.jpg" alt="JSP2_1.jpg">
+  	<img src="../images/main02.jpg" alt="main02.jpg">
+  	<img src="../images/Sony1.jpg" alt="Sony1.jpg">
+  </div>
+</div>
+</body>
+</html>

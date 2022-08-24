@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../CSS/public.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+<style type="text/css">
+span{
+	font-size : 1.5em;
+	color : red;
+}
+</style>
+<script>
+function proc1() {
+	hbody = $('body').html();
+ 	//alert(hbody);
+	
+	$('#result1').html(hbody); // html, text의 출력 결과가 다르다
+}
+
+function proc2() {
+	tbody = $('body').text();
+// 	alert(tbody);
+	
+	$('#result2').text(tbody); // html, text의 출력 결과가 같다
+}
+
+function proc3() {
+	phtml = $('p').html();
+	
+	$('#result3').html(phtml);
+	//$('#result3').text(phtml);
+}
+
+function proc4() {
+	ptext = $('p').text();
+	
+	$('#result4').html(ptext);
+}
+
+function proc5() {
+	phtml = "";
+
+	// $('p', '.box5') -> 이렇게도 표현 가능
+	$('.box5 p').each(function(i){
+		phtml += $('p').eq(i).html() + "<br>";
+	})
+	
+// 	alert(phtml);
+	$('#result5').text(phtml);
+}
+
+
+// body가 생성되기 전 함수가 넣어질 때 쓰는 명령어
+$(function(){})
+$(document).ready(function(){})
+window.onload = function(){}
+</script>
+</head>
+<body>
+
+<div class="box">
+    <pre>
+    html(): 태그를 포함한 문장을 가져오기
+    text(): 태그를 포함하지 않고 내용만 가져오기
+    
+    html(str) : str 내용으로 변경 하기
+    			str의 내용중에 html태그가 포함되어 있을때, 태그가 실행되어 출력된다.
+    text(str) : str의 내용중에 html태그의 포함여부에 상관없이 모두 무조건 문자로 출력된다.
+    </pre>
+    <input type="button" value="html" onclick="proc1()">
+    <input type="button" value="text" onclick="proc2()">
+  <div id="result1"></div>
+  <div id="result2"></div>
+</div>
+
+<div class="box">
+    <pre>
+    $(선택자).html(): 선택자를 대상으로 태그를 포함한 문장을 가져온다
+    				선택자가 여러개인 경우 첫번째 선택자만 대사응로 한다.
+    				
+    $(선택자).text(): 선택자를 대상으로 태그를 포함하지 않고 문장만 가져온다.
+   					선택자가 여러개인 경우 모든 선택자를 대상으로 한다.
+        
+    </pre>
+    
+    <p>1. <span>무궁화 꽃</span>이 피었습니다.</p>
+    <p>2. <span>능소화 꽃</span>이 피었습니다.</p>
+    <p>3. <span>매화 꽃</span>이 피었습니다.</p>
+    <p>4. <span>목련 꽃</span>이 피었습니다.</p>
+    <input type="button" value="html" onclick="proc3()">
+    <input type="button" value="text" onclick="proc4()">
+  <div id="result3"></div>
+  <div id="result4"></div>
+</div>
+
+<div class="box box5"> <!-- 클래스의 이름이 2개가 되도록 만들었다 -->
+    <pre>
+    $(선택자).html(): 선택자를 대상으로 태그를 포함한 문장을 가져온다
+    				선택자가 여러개인 경우 첫번째 선택자만 대사응로 한다.
+    반복문을 이용하여 전체 선택자를 대상으로 한다.
+    $.each(선택자, function(){}) --> function에 매개변수가 올 수도 있고 안와도 된다.
+    $(선택자).each(function(){})
+    
+    </pre>
+    
+    <p>1. <span>무궁화 꽃</span>이 피었습니다.</p>
+    <p>2. <span>능소화 꽃</span>이 피었습니다.</p>
+    <p>3. <span>매화 꽃</span>이 피었습니다.</p>
+    <p>4. <span>목련 꽃</span>이 피었습니다.</p>
+    <input type="button" value="html" onclick="proc5()">
+  <div id="result5"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../CSS/public.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>
+$(function() {
+	$('#result1 p').on('click', function(){
+		//클릭한 p태그의 부모를 비교 - is 사용
+		if($(this).parent().is('.dp')){
+			
+			cr = parseInt(Math.random()*200).toString(16);
+			cg = parseInt(Math.random()*200).toString(16);
+			cb = parseInt(Math.random()*200).toString(16);
+			//p태그를 복사 - 부모위치에 복사한다.
+			$(this).clone(true).appendTo($(this).parent())
+				   .css('color', '#' + cr + cg + cb );
+		}else{
+			alert("작업대상이 아닙니다.");
+		}
+	})
+	
+	$('button').on('click', function(){
+		vcolor = $(this).prev().css('color') // 아래와 같은 결과
+		vcolor = $(this).parent().find('p').css('color');
+		
+		alert(vcolor);
+	})
+})
+</script>
+<style>
+#p1{
+	color : red;
+}
+#p2{
+	color : green;
+}
+#p3{
+	color : blue;
+}
+</style>
+</head>
+<body>
+
+<div class="box">
+    <pre>
+    </pre>
+    <input type="button" value="확인" id="btn1">
+  <div id="result1">
+  	<div class="dp">
+  	  <p>무궁화 꽃이 피었습니다.</p>
+  	</div>
+  	
+  	<p>능소화 꽃이 피었습니다.</p>
+  	
+  	<div class="dp">
+  	  <p>매화 꽃이 피었습니다.</p>
+  	</div>
+  </div>
+</div>
+
+
+  <div id="result2">
+  	<div class="dp">
+  	  <p id="p1">무궁화 꽃이 피었습니다.</p>
+  	  <button type="button">color</button>
+  	</div>
+  	
+  	<div class="dp">
+  	  <p id="p2">능소화 꽃이 피었습니다.</p>
+  	  <button type="button">color</button>
+  	</div>
+  	
+  	<div class="dp">
+  	  <p id="p3">매화 꽃이 피었습니다.</p>
+  	  <button type="button">color</button>
+  	</div>
+  </div>
+
+
+</body>
+</html>

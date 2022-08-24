@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+
+<style>
+table {
+ border : 1px solid  gray; 
+ border-collapse:  collapse;
+}
+td{
+  width : 250px;
+  height : 50px;
+  text-align: center;
+}
+
+</style>
+
+<script>
+$(function(){
+	$('#btn1').on('click', function(){
+		
+		$('tr:even').css('background', 'lightblue');
+		$('tr:odd').css('background', 'lightgray');
+		
+		$('tr:first').css('background', 'black')
+		             .css('color', 'white')
+		             .css('font-size' , '1.5em')
+		             .css('font-weight', 'bold');
+	})
+})
+</script>
+</head>
+<body>
+
+<div class="box">
+ <pre>
+  
+ </pre>
+  <input id="btn1" type="button" value="확인" >
+  <div id="result1">
+  <table border="1">
+    <tr>
+       <td>이름</td>
+       <td>주소</td>
+    </tr>
+    
+     <tr>
+       <td></td>
+       <td></td>
+    </tr>
+    
+    
+     <tr>
+       <td></td>
+       <td></td>
+    </tr>
+    
+     <tr>
+       <td></td>
+       <td></td>
+    </tr>
+    
+     <tr>
+       <td></td>
+       <td></td>
+    </tr>
+    
+     <tr>
+       <td></td>
+       <td></td>
+    </tr>
+  
+  </table>
+  
+  
+  
+  </div>
+</div>
+</body>
+</html>
+
+
+
+

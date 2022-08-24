@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../CSS/public.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+$(function() {
+	$('p').on('click',function() {
+		//vimg = $("<img src='' alt=''>");
+		//img = $(this).text();
+		img = $(this).attr('title');
+		vimg = $("<img>", {
+							'src' : '../images/' + img + '.jpg',
+							'alt' :  img + '.jpg',
+							'width' : '50px',
+							'height' : '50px' });
+		
+// 		$(this).append(vimg);  $(vimg).appendTo(this)
+		//$(this).prepend(vimg);
+// 		$(this).after(vimg);  $(vimg).insertAfter(this)
+		$(this).before(vimg)
+	})
+})
+</script>
+</head>
+<body>
+
+<div class="box">
+    <pre>
+    </pre>
+  <div id="result1">
+  	<p title="Tulips">튜울립</p>
+  	<p title="Chrysanthemum">국화</p>
+  	<p title="Koala">코알라</p>
+  	<p title="Hydrangeas">수국</p> 
+  </div>
+</div>
+</body>
+</html>

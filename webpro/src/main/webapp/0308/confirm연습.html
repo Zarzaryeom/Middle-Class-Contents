@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../CSS/public.css">
+<script>
+function proc1(){
+	
+	var str = "";
+	
+	while (true) {
+		dan = prompt("단수를 입력 - 구구단 출력");
+		
+		//dan이 0이면 종료
+		if(dan == 0) break;
+		
+		str += `<br>**** ${dan} ****<br>`;
+		for (let i = 1; i < 10; i++) {
+			str += `${dan} * ${i} = ${dan*i} <br>`;
+
+			//일반 문자열로 썻을 때
+			//str += dan + " * " + i + " = " + dan*i + "<br>";
+		}
+	}
+	document.querySelector('#result1').innerHTML = str;
+}
+
+function proc2(){
+	var str = "";
+	
+	while(true){
+		dan = prompt("단수를 입력");
+		
+		str += `<br>**** ${dan} ****<br>`;
+		for(let i = 1; i < 10; i++){
+			str +=  `${dan} * ${i} = ${dan*i} <br>`; 
+		}
+		yesno = confirm("계속할래???");
+		if(!yesno) break;
+	}
+	document.querySelector('#result2').innerHTML = str;
+}
+
+function proc3(){
+	str = "<table border='1'>";
+	
+	for(let i = 1; i < 10; i++){
+		//줄(tr) 생성
+		str += "<tr>"
+		for(let k = 1; k < 10; k++){
+			//칸(td) 생성
+			str += "<td>" + (i * k) + "</td>"
+		}
+		str += "</tr>"
+	}
+	
+	str += "</table>"
+	
+	document.querySelector("#result3").innerHTML = str;
+}
+</script>
+
+<style>
+table{
+	border : 1px solid blue;
+	border-spacing: 10px;
+}
+
+td{
+	width : 50px;
+	height : 50px;
+	text-align: center;
+}
+</style>
+</head>
+<body>
+<div class="box">
+  <pre>
+    단수를 입력한다 - prompt
+    반복적으로 입력을 하면서 0이 입력되면 종료 한다.
+  </pre>
+  <input type="button" value="확인" onclick="proc1()"><br>
+  <div id="result1"></div>
+</div>
+
+<div class="box">
+  <pre>
+    confirm() : 실행도중 클라이언트의 대답을 요구 할 때 사용
+    리던결과값은 true 또는 false
+  </pre>
+  <input type="button" value="확인" onclick="proc2()"><br>
+  <div id="result2"></div>
+</div>
+
+<div class="box">
+  <pre>
+    구구단을 table로 작성
+  </pre>
+  <input type="button" value="확인" onclick="proc3()"><br>
+  <div id="result3"></div>
+</div>
+</body>
+</html>

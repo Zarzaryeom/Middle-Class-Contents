@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../CSS/public.css">
+<style type="text/css">
+.box div#result2{
+	width : 100px;
+	float : left;
+	height : 20px;
+}
+input[value=이전]{
+	float : left;
+}
+input[value=button]{
+	margin : 5px;
+}
+</style>
+<script>
+	today = new Date(); //오늘 날짜
+	
+	window.onload = function(){
+		res2 = document.getElementById('result2');
+		res2.innerHTML = today.toLocaleDateString();
+	}
+
+function proc1(){
+	
+	//선택한 값을 가져온다. - value
+	selectDay = document.getElementById('pdate').value;
+	
+	//가져온 값으로 Date객체 생성
+	day = new Date(selectDay);
+	
+	//날짜 수 구하기 getTime();
+	check1 = (today.getTime() - day.getTime()) / (1000 * 60 * 60 * 24);
+	check2 = (day.getTime() - today.getTime()) / (1000 * 60 * 60 * 24);	
+	
+	console.log(check1);
+	console.log(check2);
+	console.log(selectDay);
+	
+	str = "오늘 날짜 : " + today.toLocaleString() + "<br>";
+	str += "선택한 날짜 : " + day.toLocaleString() + "<br>"
+	
+	//비교
+	if(check1 >= 7 || check2 >= 7){
+		str += parseInt(check1) + "일이 지났습니다. <br>";
+		document.getElementById('result1').innerHTML = str + "교환 가능 기한이 지났습니다.";
+	}else{
+		document.getElementById('result1').innerHTML = str + "교환이 가능합니다.";
+	}
+}
+	
+function proc2(input){
+	//input : -, +
+	
+	//div의 현재 날짜를 가져온다.
+	
+	//가져온 날짜로 Date객체를 생성한다.
+	dtext = new Date(document.getElementById('result2').innerHTML);
+// 	res = res2.getTime() + (24*1000*60*60);
+// 	document.getElementById('result2').innerHTML = (new Date(res)).toLocaleString();
+	
+// 	console.log(res2, res);
+	
+	//getTime()으로 milisec값을 구한다.
+	currday = new Date(dtext);
+	
+	//이전이면 1일의 millisec값을 뺀다.
+	ctimes = currday.getTime();
+	
+	//다음이면 1일의 millisec값을 더한다.
+	milli = 1000*24*60*60;
+	
+	//-, + 한 값을 가지고 다시 Date객체를 생성한다.
+	if(input == '-'){
+		day = ctimes - milli;
+	}else {
+		day = ctimes + milli;
+	}
+	
+	console.log(dtext, currday, ctimes, milli, day)
+	newDay = new Date(day);
+	
+	//div id = result2에 출력한다.
+	document.getElementById('result2').innerHTML = newDay.toLocaleDateString();
+}
+</script>
+</head>
+<body>
+
+<div class="box">
+    <pre>
+    선택한 날로부터 오늘까지 7일이 지났으면 교환환불 불가
+    </pre>
+    <input type="date" id ="pdate">
+    <input type="button" value="확인" onclick="proc1()">
+  <div id="result1"></div>
+</div>
+
+<div class="box">
+    <pre>
+    선택한 날로부터 오늘까지 7일이 지났으면 교환환불 불가
+    </pre>
+    <input id="pr" type="button" value="이전" onclick="proc2('-')">
+  <div id="result2"></div>
+  	<input id="" type="button" value="다음" onclick="proc2('+')">
+</div>
+
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../CSS/public.css">
+<script type="text/javascript">
+var rect = {
+	width : 5,
+	height : 8,
+	getArea : function(){ 
+		return this.width * this.height; 
+	},
+	getCircum : function(){
+		return (this.width + this.height) * 2; 
+	}
+}
+
+function proc1(){
+	print("result1");
+}
+
+function print(res){
+	//rect정보 출력
+	let str = "";
+	if(typeof rect.name != "undefined"){
+		str += `이름 : ${rect.name} <br>`;
+	}
+	
+	str += `가로 : ${rect.width} <br>`;
+	str += `세로 : ${rect.height} <br>`;
+	str += `면적 : ${rect.getArea()} <br>`;
+	str += `둘레 : ${rect.getCircum()} <br>`;
+	
+	document.getElementById(res).innerHTML = str;
+}
+
+function proc2(){
+	//가로 세로 입력 - rect객체의 width, height의 값으로 대입
+	wid = parseInt(prompt("가로 입력"));
+	hei = parseInt(prompt("세로 입력"));
+	
+	rect.width = wid;
+	rect.height = hei;
+	
+	//정보 출력
+	print("result2");
+	
+}
+
+proc3 = () =>{
+	//이름 추가
+	input = prompt("이름을 입력: ");
+	rect.name = input;
+	
+	//출력
+	print("result3");
+}
+</script>
+<style>
+	.box input[type=button]{
+		width : 90px;
+	}
+</style>
+</head>
+<body>
+<div class="box">
+    <pre>
+    객체 생성 - 리터럴(문자값, 숫자값)
+    rect(사갹형) 객체 선언 생성
+    속성	: 가로(width), 세로(height)
+    동작(함수) : 면적구하기(getArea), 둘레구하기(getCircum)
+    </pre>
+    <input type="button" value="확인" onclick="proc1()">
+  <div id="result1"></div>
+</div>
+<div class="box">
+    <pre>
+    버튼을 클릭하면 가로와 세로의 값을 입력하여 계산하고 출력한다.
+    </pre>
+    <input type="button" value="가로세로입력" onclick="proc2()">
+  <div id="result2"></div>
+</div>
+
+<div class="box">
+    <pre>
+    객체에 속성과 동작(함수)을 동적으로 추가할 수 있다.
+    (불러오는 객체에 정의되어있지 않는 속성과 함수도 넣을 수 있다.)
+    속성 name을 추가한다.    
+    </pre>
+    <input type="button" value="이름입력" onclick="proc3()">
+  <div id="result3"></div>
+</div>
+
+</body>
+</html>

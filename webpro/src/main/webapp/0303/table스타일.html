@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+ table{
+ 	border : 1px solid blue;
+ 	margin : 50px auto;
+ 	border-collapse : collapse;
+ }
+ 
+ td{
+ 	width : 300px;
+ 	height : 50px;
+ 	text-align: center;
+ }
+ 
+ #tab2{
+ 	border-spacing : 10px;
+ 	border-collapse : separate;
+ 	empty-cells : hide;
+ }
+ 
+ 
+ #tab2 td{
+ 	width : 80px;
+ 	height : 80px;
+ }
+ caption{
+ 	font-size : 2.0em;
+ 	margin : 50px;
+	caption-side: bottom;
+ }
+ th{
+ 	background : blue;
+ 	color : white; 	
+ 	height : 100px;
+ }
+ 
+ .alt{
+ 	background : yellow;
+ }
+ 
+ #tab2 tr:nth-child(2n){
+ 	background : pink;
+ }
+ 
+</style>
+</head>
+<body>
+  <table border="1">
+    <caption>VIP라스트</caption>
+    <tr>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+    </tr>
+    
+    <tr>
+      <td>4</td>
+      <td>5</td>
+      <td>6</td>
+    </tr>
+    
+    <tr class="alt">
+      <td>7</td>
+      <td>8</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>7</td>
+      <td>8</td>
+      <td></td>
+    </tr>
+    
+    <tr class="alt">
+      <td>7</td>
+      <td>8</td>
+      <td></td>
+    </tr>
+    
+  </table>
+
+  <table border="1">
+    <caption>VIP라스트</caption>
+    <tr>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    
+    <tr>
+      <td>4</td>
+      <td>5</td>
+      <td>6</td>
+    </tr>
+    
+    <tr>
+      <td>7</td>
+      <td>8</td>
+      <td></td>
+    </tr>
+    
+  </table>
+  
+   <table id="tab2" border="1">
+    <caption>블랙 리스트</caption>
+    <tr>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    
+    <tr>
+      <td>4</td>
+      <td>5</td>
+      <td>6</td>
+    </tr>
+    
+    <tr>
+      <td>7</td>
+      <td>8</td>
+      <td></td>
+    </tr>
+    
+     <tr>
+      <td>7</td>
+      <td>8</td>
+      <td>9</td>
+    </tr>
+    
+     <tr>
+      <td>7</td>
+      <td>8</td>
+      <td></td>
+    </tr>
+    
+  </table>
+
+</body>
+</html>

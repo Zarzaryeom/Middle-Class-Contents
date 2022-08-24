@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="../CSS/public.css" rel="stylesheet">
+<script src="../js/배열.js"></script>
+</head>
+<body>
+<div class="box">
+  <pre>  
+  리터럴에 의한 배열생성(실제 값을 갖고 배열을 생성)
+  fr = ["사과", "복숭아", "딸기"];
+  </pre>
+  <input type="button" value="확인" onclick="proc1()">
+  <div id="result1"></div>  
+</div>
+
+<div class="box">
+  <pre>  
+  Array객체에 의한 배열생성 - 생성자에 초기값전달
+  fr = new Array("사과", 1200, "파인애플", "망고", 345.678);
+  </pre>
+  <input type="button" value="확인" onclick="proc2()">
+  <div id="result2"></div>  
+</div>
+
+<div class="box">
+  <pre>  
+  Array객체에 의한 배열생성
+  fr = new Array();
+  fr[0] = "사과";
+  fr[1]= 100;
+  fr[2] = 123.456; 
+  
+  </pre>
+  <input type="button" value="확인" onclick="proc3()">
+  <div id="result3"></div>  
+</div>
+</body>
+</html>

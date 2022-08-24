@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../CSS/public.css">
+<script src="../js/jquery-3.6.0.min.js"></script>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+// 	  hlist = document.getElementsByTagName('h1');
+// 	  for(i=0; i<hlist.length; i++){
+// 		  hlist[i].addEventListener('click', fhide); //함수호출형식이 아닌 이름만 준다.
+// 	  }
+	  $('h1').on('click', function(){
+		  $(this).hide();
+		  
+		  //남은 요소 h1이 있느냐? --> 보이는 h1이 있는가?
+		  //없으면 버튼을 보이게 한다.
+		  //변수이름으로 올때는 ''을 붙이지 않는다.
+		  if($('h1:visible').length < 1){
+			  $('#btn_show').show();
+			  //or $('#btn_show').css('display', 'block');
+			  
+			  //스크립트 방식
+			  // a = document.getElementById('btn_show');
+			  // a.style.display = "block";
+		  }
+		  
+	  })
+	  
+	  $('#btn_show').on('click', function(){
+		  //h1을 보이게 한다
+		  $('h1').show();
+		  //$('h1').css('display', 'block');
+		  //클릭한 버튼 자신은 안보이게 한다.
+		  $(this).hide();
+		  //$(this).css('display', 'none');
+	  })
+	  
+  })
+</script>
+<style>
+.box input[type=button]{
+	display: none;
+}
+</style>
+</head>
+<body>
+
+<div class="box">
+    <pre>
+      jQuery방식으로 이벤트 설정
+    </pre>
+  <div id="result1">
+    <h1>무궁화 꽃이 피었습니다1</h1>
+    <h1>무궁화 꽃이 피었습니다2</h1>
+    <h1>무궁화 꽃이 피었습니다3</h1>
+    <h1>무궁화 꽃이 피었습니다4</h1>
+    <h1>무궁화 꽃이 피었습니다5</h1>
+    <h1>무궁화 꽃이 피었습니다6</h1>
+    <h1>무궁화 꽃이 피었습니다7</h1>
+    <h1>무궁화 꽃이 피었습니다8</h1>
+    <h1>무궁화 꽃이 피었습니다9</h1>
+    <h1>무궁화 꽃이 피었습니다10</h1>
+  </div>
+  <input type="button" id="btn_show" value="보이기">
+</div>
+</body>
+</html>

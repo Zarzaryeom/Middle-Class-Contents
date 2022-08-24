@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="../CSS/public.css">
+<link rel="shortcut icon" type="image/x-icon" href="../images/check.png"/>
+
+<script>
+	var now = new Date();
+	var vd;
+	
+	window.onload = function(){
+		//div를 검색
+		vd = document.getElementsByTagName('div')
+		vd[0].innerHTML = now + "<br>";
+		
+		//now로 출력되는 시간을 한국식으로 바꾸기 위한 함수
+		//그냥 =을 쓰면 데이터가 덮어씌워지고 +=을 쓰면 이어서 저장된다.
+		var now2 = now.toLocaleString(); // 현지 시간 기준으로 변환 후 출력
+		vd[0].innerHTML += now2 + "<br>";
+		
+		var now3 = now.toLocaleDateString(); // 현지 시간 기준으로 변환 후 날짜만 출력
+		vd[0].innerHTML += now3 + "<br>";
+	}
+	function proc(){
+		
+		cr= parseInt(Math.random()* 256);
+		cg= parseInt(Math.random()* 256);
+		cb= parseInt(Math.random()* 256);
+		
+		//div객체 요소가 필요 - 검색
+		//vd[0].style.background = "rgb(" + cr + "," + cg + "," + cb + ")";
+		//백틱으로 구현
+		vd[0].style.background = `rgb(${cr}, ${cg}, ${cb})`
+		
+		
+		
+		//16진수로 변환할 때
+// 		cr = cr.toString(16);
+// 		cg = cg.toString(16);
+// 		cb = cb.toString(16);
+// 		vd[0].style.background="#"+cr+cg+cb;
+		
+	}
+</script>
+
+<style>
+span{
+	color : red;
+}
+</style>
+
+</head>
+<body>
+  <pre>
+  <span>window.onload = function() { }</span>
+    body태그내의 모든 요소들이 document객체의 object로 완성되어 실행 후 가장 먼저 실행되는 코드다 
+  </pre>
+  <div onclick="proc()"></div>
+</body>
+</html>

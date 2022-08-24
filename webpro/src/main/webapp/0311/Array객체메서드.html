@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../CSS/public.css">
+<style type="text/css">
+.box input[type=button]{
+	margin : 5px;
+	width : 100px;
+}
+</style>
+
+<script type="text/javascript">
+var arr = ["사과", "복숭아", "딸기", "사과", "바나나", "수박", "사과"];
+
+function proc1(){
+	fr = prompt("찾는 과일을 입력하세요");
+	idx = arr.indexOf(fr);
+	
+	str ="찾는 이름 : " + fr + "<br>";
+	if(idx == -1){
+		str += `배열에 없는 아이템입니다. <br>`;		
+	}else{
+		str += `${idx} 번째 있습니다.`;
+	}
+	
+	document.getElementById("result1").innerHTML = str;
+}
+
+function proc2(){
+	fr = prompt("찾는 과일을 입력하세요");
+	idx = arr.lastIndexOf(fr);
+	
+	str ="찾는 이름 : " + fr + "<br>";
+	if(idx == -1){
+		str += `배열에 없는 아이템입니다. <br>`;		
+	}else{
+		str += `${idx} 번째 있습니다.`;
+	}
+	
+	document.getElementById("result2").innerHTML = str;
+}
+
+function proc3(){
+	fr = prompt("찾는 과일을 입력하세요");
+	start = 0;
+	
+	str = `찾는 과일 : ${fr} <br>`;
+	
+	while(true){
+		idx = arr.indexOf(fr,start);
+		
+		if(idx == -1)	break;
+		
+		str += `${idx}&nbsp;&nbsp; `;
+		
+		start = idx +1;
+	}
+	str += `번째 있습니다.`;
+		
+	document.getElementById("result3").innerHTML = str;
+}
+function proc4(){
+	newarr = arr.slice(3,6);
+	
+	str = `원래배열 : ${arr} <br>`;
+	str += `arr.slice(3,6) : ${newarr} <br>`;
+	
+	document.getElementById("result4").innerHTML = str;
+}
+
+function proc5(){
+	str = `원래 배열 : ${arr}<br>`;
+	
+	//삭제----------------
+	arr.splice(2,1);
+	
+	str += `arr.splice(2,1) 후 : ${arr} <br>`;
+	document.getElementById("result5").innerHTML = str;
+	
+	arr.splice(2,0,"키위", "망고");
+		
+	str = `arr.splice(2,0,"키위", "망고") 후 : ${arr} <br>`;
+	document.getElementById("result5").innerHTML += str;
+}
+</script>
+
+</head>
+<body>
+
+<div class="box">
+    <pre>
+     arr = ["사과", "복숭아", "딸기", "사과", "바나나", "수박", "사과"];
+    </pre>
+    <input type="button" value="indexOf" onclick="proc1()">
+    <input type="button" value="lastIndexOf" onclick="proc2()">
+    <input type="button" value="indexOf_start" onclick="proc3()">
+  <div id="result1"></div>
+  <div id="result2"></div>
+  <div id="result3"></div>
+</div>
+
+<div class="box">
+    <pre>
+     arr = ["사과", "복숭아", "딸기", "사과", "바나나", "수박", "사과"];
+     slice(start,end) : start ~ end-1까지 요소를 자른다.
+     splice(index, n개, a,b,c...);
+     	arr배열의 index번째에서 n개를 삭제하고 a,b,c를 삽입한다.(삭제와 수정을 동시에 작업)
+     	a,b,c... 생략하면 index번째에서 n개를 삭제한다 
+    </pre>
+    <input type="button" value="slice" onclick="proc4()">
+    <input type="button" value="splice" onclick="proc5()">
+  <div id="result4"></div>
+  <div id="result5"></div>
+</div>
+</body>
+</html>

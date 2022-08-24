@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../CSS/mystyle.css">
+<style type="text/css">
+label{
+	margin-left: 25px;
+	margin-top : 10px;
+	margin-right : 10px;
+	width: 110px;
+}
+fieldset{
+	width : 600px;
+	height : auto; 
+	margin : 0 auto;
+}
+h1{
+	text-align: center;
+}
+input[type=text], input[type=date]{
+	height: 10px;
+	width : 300px;
+	padding : 5px;
+	margin : 5px;
+	
+}
+input[type=button]{
+	width: 80px;
+}
+
+.bt1{
+	text-align: center;
+	width : 250px;
+	margin-left: 20px;
+}
+span{
+	margin-right: 100px;
+}
+
+
+
+
+
+</style>
+
+</head>
+<body>
+<h1>회원가입 페이지</h1>
+<form>
+  <fieldset>
+   <legend>회원정보입력</legend>
+   <label>아이디</label> <input type="text" name="id">
+   <input type="button" value="중복검사" > <br>
+   <label>패스워드</label> <input type="text" name="pass"> <br>
+   <label>패스워드 확인</label> <input type="text" name="passcheck"> <br>
+   <label>이름</label> <input type="text" placeholder="홍길동" name="name"> <br>
+   <label>휴대폰번호</label> <input type="text" placeholder="010-1234-5678" name="ph"> <br>
+   <label>이메일</label> <input type="text" placeholder="abc123@google.com" name="email"> <br>
+   <label>생일</label> <input type="date" name="birthDay"> <br>
+   <label>홈페이지</label> <input type="text" placeholder="www.google.com" name="homepage"> <br>
+   <label>성별</label>
+    <span><input type="radio" name="gender" checked value="남자">남자</span>
+    <input type="radio" name="gender" value="여자">여자 <br><br>
+ 
+   <input class="bt1" type="submit" value="제출">
+   <input class="bt1" type="reset" value="초기화">
+  </fieldset>
+</form>
+
+</body>
+</html>

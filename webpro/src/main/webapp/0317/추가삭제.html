@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../CSS/public.css">
+<script>
+	arr = ["별빛같은 나의 사랑아", "이제 나만 믿어요", "미운사람", "비망록",
+		"마량에 가고 싶다", "Hellow", "Happy", "배신자", "보라빛 엽서"]
+function proc1() {
+	//랜덤발생 - arr의 문자를 선택
+	rand = parseInt(Math.random() * arr.length);
+	
+	//선택된 문자를 가지고 textNode를 생성
+	text = document.createTextNode(arr[rand]);	
+	
+	//p태그를 생성
+	ptag = document.createElement('p');
+	
+	//textNode를 p태그에 자식으로 추가한다.
+	ptag.appendChild(text);
+	
+	//result1에 p태그를 자식으로 추가한다.
+	document.getElementById('result1').appendChild(ptag);
+}
+
+function proc2() {
+	
+	parent = document.getElementById('result1');
+	
+	parent.removeChild(parent.lastChlid);
+}
+
+function proc3() {
+	//랜덤발생 - arr의 문자를 선택
+	rand = parseInt(Math.random() * arr.length);
+	
+	//선택된 문자를 가지고 textNode를 생성
+	text = document.createTextNode(arr[rand]);	
+	
+	//input 태그 설정 - type, value 설정
+	input = document.createElement('input');
+	input.type = "button";
+	input.value = "삭제";
+	input.onclick = function() {
+		this.parentNode.remove();
+	}
+	
+	//p태그를 생성
+	ptag = document.createElement('p');
+	
+	//textNode를 p태그에 자식으로 추가한다.
+	ptag.appendChild(text);
+	
+	//input 태그를 p태그에 자식으로 추가한다.
+	ptag.appendChild(input);
+	
+	//result1에 p태그를 자식으로 추가한다.
+	document.getElementById('result3').appendChild(ptag);
+}
+</script>
+</head>
+<body>
+
+<div class="box">
+    <pre>
+    버튼 클릭시 랜덤으로 문자열을 발생한다.
+    문자열로 textNode를 생성한다.
+    p태그를 생성한다
+    p태그에 textNode를 자식으로 추가한다.
+    result1에 p태그를 자식으로 추가한다.
+    </pre>
+    <input type="button" value="추가" onclick="proc1()">
+    <input type="button" value="삭제" onclick="proc2()">
+  <div id="result1"></div>
+</div>
+
+<div class="box">
+    <pre>
+    버튼 클릭시 랜덤으로 문자열을 발생한다.
+    문자열로 textNode를 생성한다.
+    
+    button을 생성 -input태그를 생성 - type, value, onclick
+    
+    p태그를 생성한다
+    p태그에 textNode와 button을 자식으로 추가한다.
+    result1에 p태그를 자식으로 추가한다.
+    </pre>
+    <input type="button" value="추가삭제" onclick="proc3()">
+  <div id="result3"></div>
+</div>
+</body>
+</html>

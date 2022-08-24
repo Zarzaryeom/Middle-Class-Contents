@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+div{
+	width : 200px;
+	height : 100px;
+	margin : 10px;
+	
+}
+#d1, #d5, #d9{
+	background: yellow;
+}
+#d2, #d6, #d10{
+	background: lightblue;
+}
+#d3, #d7, #d11{
+	background: lightgreen;
+}
+#d4, #d8, #d12{
+	background: pink;
+}
+#d6{
+	position : relative;
+	top : 80px;
+	left : 70px;
+}
+
+#d11{
+	position : absolute;
+	top : 400px;
+	left : 150px;
+}
+
+#d4{
+	position : fixed;
+	top : 300px;
+	right : 200px;
+}
+</style>
+</head>
+<body>
+ <p>정적 위치 설정</p>
+ <div id="d1">1</div>
+ <div id="d2">2</div>
+ <div id="d3">3</div>
+ <div id="d4">4<br>
+ 	position : fixed;<br>
+	top : 300px;<br>
+	right : 200px;,<br>
+ </div>
+ <hr>
+ <p>상대 위치 설정</p>
+ <div id="d5">5</div>
+ <div id="d6">
+ 	6<br>
+ 	position : relative;<br>
+	top : 80px;<br>
+	left : 70px;<br>
+ </div>
+ <div id="d7">7</div>
+ <div id="d8">8</div>
+ <hr>
+ <p>절대 위치 설정</p>
+ <div id="d9">9</div>
+ <div id="d10">10</div>
+ <div id="d11">
+ 	11<bt>
+ 	position : absolute;<br>
+	top : 400px;<br>
+	left : 150px;<br>
+ </div>
+ <div id="d12">12</div>
+</body>
+</html>

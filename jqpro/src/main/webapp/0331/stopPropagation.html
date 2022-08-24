@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../CSS/public.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('#btn1').on('click', function(){
+		$(this).css('border', '5px solid red');
+		event.stopPropagation();
+	})
+	$('#sp').on('click', function(){
+		$(this).css('background', 'green')
+			   .css('border', '2px solid red')
+		event.stopPropagation();
+	})
+	$('#result1').on('click', function(){
+		$(this).css('background', 'gray');
+	})
+})
+</script>
+<style>
+.box div{
+	width : 300px;
+	height : 300px;
+	padding : 20px;
+}
+#sp{
+	display : inline-block;
+	background : lightblue;
+	width : 100px;
+	height : 100px;
+	padding : 30px;
+}
+</style>
+</head>
+<body>
+
+<div class="box">
+    <pre>
+    </pre>
+  <div id="result1">
+    <span id="sp">
+      <input type="button" value="확인" id="btn1">
+    </span>
+  
+  </div>
+</div>
+</body>
+</html>

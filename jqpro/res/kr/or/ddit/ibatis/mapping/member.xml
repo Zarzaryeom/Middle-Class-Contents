@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+	
+<sqlMap namespace="member">
+
+	<!-- 전체출력 -->
+	<select id="selectAll" resultClass="memberVO">
+		select * from member
+	</select>
+	
+	<!-- 중복검사 -->
+	<select id="checkId" resultClass="String" parameterClass="String">
+		select mem_id from member
+		 where mem_id = #mem_id#
+	</select>
+	
+	<!-- update로 저장하는 방법	 
+	<update id="insertMember" parameterClass="memberVO">
+		insert into member(
+ 			mem_id, mem_pass, mem_name, mem_bir, mem_zip, mem_add1,
+ 			mem_add2, mem_hp, mem_mail)
+ 		values(
+ 			#mem_id#, #mem_pass#, #mem_name#, #mem_bir#, #mem_zip#, #mem_add1#,
+ 			#mem_add2#, #mem_hp#, #mem_mail#)
+	</update>
+	
+	-->
+	
+	<!-- 저장하기 -->
+	<insert id="insertMember" parameterClass="memberVO">
+		insert into member(
+ 			mem_id, mem_pass, mem_name, mem_bir, mem_zip, mem_add1,
+ 			mem_add2, mem_hp, mem_mail)
+ 		values(
+ 			#mem_id#, #mem_pass#, #mem_name#, #mem_bir#, #mem_zip#, #mem_add1#,
+ 			#mem_add2#, #mem_hp#, #mem_mail#)
+ 			
+ 		<selectKey keyProperty="mem_id" resultClass="String">
+ 			select mem_id from member
+ 			 where mem_id = #mem_id#
+ 		</selectKey>
+	</insert>
+
+
+
+
+
+
+
+
+</sqlMap>

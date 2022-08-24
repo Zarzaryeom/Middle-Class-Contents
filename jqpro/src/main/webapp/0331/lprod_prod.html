@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="../CSS/public.css">
+<script>
+$(function(){
+	$('#btn1').on('click', function(){
+		$.ajax({
+			url : '/jqpro/LprodServlet.do',
+			type : 'get',
+			success : function(res){
+				str = "";
+				$.each(res, function(i, v){
+					str += "<option value='"+ v.gu +"'>" + v.nm + "</option>"
+				})
+				$('#lprod').html(str);
+				$('#lprod').trigger('change')
+			},
+			error : function(xhr){
+				alert("상태 : " + xhr.status)
+			},
+			dataType : 'json'
+		})
+	})
+	
+	//lprod를 선택하면 - lprod_gu값을 얻어서 서버로 전송
+	//선택시 prod데이터가 없는 경우
+	$('#lprod').on('change', function(){
+		lgu = $('option:selected', this).val();
+		$.ajax({
+			url : '/jqpro/ProdServletSW.do',
+			data : {"lgu" : lgu},
+			type : 'get',
+			success : function(res){
+					str = "";
+				if(res.sw == 'ok'){
+					$.each(res.datas, function(i, v){
+						str += "<option value='"+ v.prod_id +"'>" + v.prod_name + "</option>"
+					})
+				}else{
+					str += "<option value='0'>데이터가 없습니다.</option>"
+					$('#result1').empty();
+				}
+				$('#prod').html(str);
+				$('#prod').trigger('change')
+			},
+			error : function(xhr){
+				alert("상태 : " + xhr.status);
+			},
+			dataType : 'json'
+		})
+	})
+	
+	//prod를 선택하면 - prod_id값을 얻어서 서버로 전송
+	//prod_id를 얻어서 서버로 보낸다 - 결과를 result1에 출력
+	//option value=0이면 서버로 보내지 않고 result1번의 내용을 지운다 - empty
+	//prod_id를 조건으로 해서 prod에 제품 상세보기
+	$('#prod').on('change', function(){
+		//prod를 선택한 항목의 option value값 - prod_id
+		id = $('option:selected', this).val();
+		
+		//option value값 - prod_id = 0 인지 아닌지 판단
+		//0이 아니면 서버로 보낸다.
+		if(id != 0){
+		$.ajax({
+			url : '/jqpro/ProdServletSW.do',
+			data : {"id" : id},
+			type : 'post',
+			success : function(res){
+				str = "<table border='1' class='table'>";
+				str += "<thead class='thead-dark'>";
+				str += "<tr><th>항목</th>";
+				str += "<th>내용</th></tr></thead>";
+				str += "<tr><td>PROD_NAME</td>";
+				str += "<td>"+ res.prod_name + "</td></tr>";
+				str += "<tr><td>PROD_LGU</td>";
+				str += "<td>"+ res.prod_lgu + "</td></tr>";
+				str += "<tr><td>PROD_BUYER</td>";
+				str += "<td>"+ res.prod_buyer + "</td></tr>";
+				str += "<tr><td>PROD_COST</td>";
+				str += "<td>"+ res.prod_cost + "</td></tr>";
+				str += "<tr><td>PROD_PRICE</td>";
+				str += "<td>"+ res.prod_price + "</td></tr>";
+				str += "<tr><td>PROD_SALE</td>";
+				str += "<td>"+ res.prod_sale + "</td></tr>";
+				str += "<tr><td>PROD_OUTLINE</td>";
+				str += "<td>"+ res.prod_outline + "</td></tr>";
+				str += "<tr><td>PROD_DETAIL</td>";
+				str += "<td>"+ res.prod_detail + "</td></tr>";
+				str += "<tr><td>PROD_SIZE</td>"
+				str += "<td>"+ res.prod_size + "</td></tr>"
+				str += "<tr><td>PROD_COLOR</td>"
+				str += "<td>"+ res.prod_color + "</td></tr>"
+				str += "</table>";
+				$('#result1').html(str);
+			},
+			error : function(xhr){
+				alert("상태 : " + xhr.status);
+			},
+			dataType : 'json'
+		})
+		}else{
+			$('#result1').empty();
+		}
+	})
+	
+	
+	
+})
+</script>
+</head>
+<body>
+
+<div class="box">
+    <pre>
+    </pre>
+    <input type="button" value="확인" id="btn1"><br><br>
+    
+ <div class="container">
+  <h2>Lprod_Prod</h2>
+  <form>
+    <div class="form-group">
+      <label for="lprod">Lprod list</label>
+      <select class="form-control" id="lprod" name="sellist1">
+      </select>
+      <br>
+      <label for="prod">Prod list</label>
+      <select class="form-control" id="prod" name="sellist2">
+      </select>
+    </div>
+  </form>
+</div>
+
+<!--   <select id="lprod"> -->
+<!--   </select> -->
+<!--   <select id="prod"></select> -->
+<div id="result1"></div>
+</div>
+</body>
+</html>

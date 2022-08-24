@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../CSS/public.css">
+<style>
+#result1{ 
+ 	width : auto;
+/*   	display : flex;  */
+/*   	justify-content: space-around; */
+/*  	align-items: flex-start; */
+} 
+#result1 img{
+	width : 100px;
+	height : 150px;
+	border-radius: 50%;
+}
+</style>
+<script type="text/javascript">
+function proc1(res) {
+	
+		
+	//result1을 검색
+	vres1 = document.getElementById('result1');
+	
+	//시작버튼 감추기 - 더 이상 클릭하지 못하도록
+	gres = res;
+	
+	res.style.display = "none";
+	
+// 	console.log(vres1.firstChild)
+// 	console.log(vres1.firstChild.data)
+// 	console.log(vres1.lastChild)
+	
+	//1초마다 한번씩 반복
+	a = setInterval(function(){
+		//첫번째 자식을 선택한다.
+		child = vres1.firstChild;
+	
+		//마지막 자식으로 추방
+		vres1.appendChild(child);
+	}, 500);
+}
+
+function stop() {
+	
+	//스타일로 설정된 테두리를 지운다?
+// 	if(arr[ran] != null){
+// 		arr[ran].style.borderWidth = " ";
+// 		arr[ran].style.borderStyle = " ";
+// 		arr[ran].style.borderColor = " ";
+// 	}
+	
+	//시작버튼 생성하기
+	gres.style.display = "inline";
+	//반복 멈추기
+	clearInterval(a);
+	//랜덤 발생
+	ran = parseInt(Math.random() * 7 + 1);
+	
+	
+	//랜덤한 그림에 테두리 이미지에 스타일로 테두리를 설정한다.
+	arr = vres1.childNodes;
+	console.log(vres1)
+	console.log(ran, arr[ran]);
+	arr[ran].style.borderWidth = "3px";
+	arr[ran].style.borderStyle = "double";
+	arr[ran].style.borderColor = "red";
+	
+	
+}
+</script>
+</head>
+<body>
+
+<div class="box">
+    <pre>
+     
+     1초마다 첫번째 자식을 선택해서 뒤로 보낸다(firstChild, appendChild())
+     appendChild()를 실시하면 자동으로 첫번째 자식이 지워진다.
+     
+     종료버튼을 클릭하면 랜덤한 이미지 테두리가 변경된다.
+     
+     result1의 첫번째 자식(img)를 선택한다. - firstChild 
+     선택한 자식을 맨 마지막 자식으로 추가한다.(appendChild())
+     
+     appendChild() 수행시 기존의 존재하는 요소를 대상으로
+     작업시
+    </pre>
+    <input type="button" value="시작" onclick="proc1(this)">
+    <input type="button" value="종료" onclick="stop()">
+  <div id="result1">
+    <img src="../images/가구1.jpg" alt="가구1.jpg">
+    <img src="../images/스포츠1.jpg" alt="스포츠1.jpg">
+    <img src="../images/스포츠2.jpg" alt="스포츠2.jpg">
+    <img src="../images/옷1.jpg" alt="옷1.jpg">
+    <img src="../images/아메리카노.jpg" alt="아메리카노.jpg">
+    <img src="../images/컴퓨터2.jpg" alt="컴퓨터2.jpg">
+    <img src="../images/딸기스무디.jpg" alt="딸기스무디.jpg">
+  </div>
+</div>
+</body>
+</html>

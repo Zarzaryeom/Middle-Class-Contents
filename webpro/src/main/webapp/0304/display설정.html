@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+div{
+	border : 1px solid red;
+	background: yellow; 
+	width : 300px;
+	height : 250px;
+	
+	display : none;
+}
+
+input[value=감추기]{
+	display : none;
+}
+
+</style>
+<script>
+	var vd;
+	var bt;
+	//보이기버튼을 클릭하면 실행되는 함수
+	function proc(){
+	//div에 접근 검색 -getElementById('aaaa')
+	vd = document.getElementById('dd');
+	bt = document.getElementById('hide');
+	vd.style.display = "block";
+	bt.style.display = "inLine";
+	}
+	
+	function aaa(){
+	vd.style.display = "none";
+	bt.style.display = "none"
+	}
+</script>
+</head>
+<body>
+<input type="button" value="보이기" onclick="proc()">
+<input id="hide" type="button" value="감추기" onclick="aaa()">
+<br><br>
+<div id="dd"></div>
+<br>
+<p>예시</p>
+</body>
+</html>
